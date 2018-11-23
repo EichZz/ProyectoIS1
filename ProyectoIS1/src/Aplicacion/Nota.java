@@ -4,9 +4,10 @@ public class Nota {
     
     private Prueba prueba;
     private double calificacion;
-    
-    public void addNota(Nota n){
-        
+
+    public Nota(Prueba prueba, double calificacion) {
+        this.prueba = prueba;
+        this.calificacion = calificacion;
     }
 
     public void setPrueba(Prueba prueba) {
