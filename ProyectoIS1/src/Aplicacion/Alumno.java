@@ -27,7 +27,23 @@ public class Alumno {
     public void setDni(String dni) {
         this.dni = dni;
     }
-    //prueba
+
+    public void setGrupo_de_EPD(int grupo_de_EPD) {
+        this.grupo_de_EPD = grupo_de_EPD;
+    }
+
+    @Override
+    public String toString() {
+        return "Alumno: " + "nombre: " + nombre + ", apellidos: " + apellidos + ", dni: " + dni + ", grupo_de_EPD: " + grupo_de_EPD ;
+    }
     
+    public String mostrarAlumno(){
+        return toString();
+    }
+
+    public boolean addNota(Nota n){
+        boolean add = listaNotas.add(n);
+        return add;
+    }
     
 }
