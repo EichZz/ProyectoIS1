@@ -27,7 +27,7 @@ public class Alumno {
     public void setDni(String dni) {
         this.dni = dni;
     }
-    
+    //prueba
     
     
 }
