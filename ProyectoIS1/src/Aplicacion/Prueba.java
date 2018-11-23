@@ -36,6 +36,10 @@ public class Prueba {
     public void setTipo_de_prueba(String tipo_de_prueba) {
         this.tipo_de_prueba = tipo_de_prueba;
     }
+    
+    public void MostrarPrueba(){
+        toString();
+    }
 
     @Override
     public String toString() {
