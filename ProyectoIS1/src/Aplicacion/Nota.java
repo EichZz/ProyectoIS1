@@ -17,6 +17,10 @@ public class Nota {
     public void setCalificacion(double calificacion) {
         this.calificacion = calificacion;
     }
+    
+    public void mostrarNota(){
+        toString();
+    }
 
     @Override
     public String toString() {
