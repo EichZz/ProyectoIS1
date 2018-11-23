@@ -12,4 +12,6 @@ public class Prueba {
     public void setId_Prueba(int id_Prueba) {
         this.id_Prueba = id_Prueba;
     }
+    
+    //holitiis
 }
