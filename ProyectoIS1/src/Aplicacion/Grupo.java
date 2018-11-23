@@ -33,9 +33,11 @@ public class Grupo {
     
     public String toString(){
         Iterator it = listaAlumnosGrupo.iterator();
-        
-        while(){
-            
+        String s = "";
+        while(it.hasNext()){
+            Grupo g = (Grupo) it.next();
+            s += "" + g;
         }
+        return s;
     }
 }
