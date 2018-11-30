@@ -4,17 +4,20 @@
  * and open the template in the editor.
  */
 package Aplicacion;
+
 import java.util.*;
+
 /**
  *
  * @author hecto
  */
 public class Alumno {
+
     private String nombre;
     private String apellidos;
     private String dni;
     private int grupo_de_EPD;
-    private List listaNotas;
+    private List<Nota> listaNotas;
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -32,18 +35,34 @@ public class Alumno {
         this.grupo_de_EPD = grupo_de_EPD;
     }
 
-    @Override
-    public String toString() {
-        return "Alumno: " + "nombre: " + nombre + ", apellidos: " + apellidos + ", dni: " + dni + ", grupo_de_EPD: " + grupo_de_EPD ;
-    }
-    
-    public String mostrarAlumno(){
+    public String mostrarAlumno() {
         return toString();
     }
 
-    public boolean addNota(Nota n){
+    @Override
+    public String toString() {
+        return "Alumno: " + "Nombre: " + nombre + " " + apellidos
+                + ".\nDNI: " + dni + 
+                " Grupo de EPD: " + grupo_de_EPD + ".\n";
+    }
+
+    public boolean addNota(Nota n) {
         boolean add = listaNotas.add(n);
         return add;
     }
     
+    public Nota getNota(Prueba p){
+        Iterator it = listaNotas.listIterator();
+        boolean enc = false;
+        Nota n = null;
+        while(it.hasNext() && !enc){
+            Nota aux = (Nota) it.next();
+            if(p == aux.getPrueba()){
+                enc = true;
+                n = aux;
+            }
+        }
+        return n; 
+    }
+
 }
