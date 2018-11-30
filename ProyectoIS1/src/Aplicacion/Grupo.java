@@ -11,16 +11,21 @@ import java.util.List;
 
 public class Grupo {
     
-    List listaAlumnosGrupo = new ArrayList();
-    int id_Grupo;
-    int nAlumnos;
+    private List<Alumno> listaAlumnosGrupo;
+    private int id_Grupo;
+    private int nAlumnos;
 
+    public Grupo() {
+        listaAlumnosGrupo = new ArrayList();
+    }
+
+    
     public void setId_Grupo(int id_Grupo) {
         this.id_Grupo = id_Grupo;
     }
 
-    public void setnAlumnos(int nAlumnos) {
-        this.nAlumnos = nAlumnos;
+    public void setNumero(int numero) {
+        this.nAlumnos = numero;
     }
     
     public void mostrarGrupo(){
@@ -32,11 +37,11 @@ public class Grupo {
     }
     
     public String toString(){
-        Iterator it = listaAlumnosGrupo.iterator();
+        Iterator<Alumno> it = listaAlumnosGrupo.iterator();
         String s = "";
         while(it.hasNext()){
-            Grupo g = (Grupo) it.next();
-            s += "" + g;
+            Alumno a = it.next();
+            s += "" + a;
         }
         return s;
     }
