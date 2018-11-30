@@ -43,6 +43,17 @@ public class Prueba {
 
     @Override
     public String toString() {
-        return "Prueba{" + "id_Prueba=" + id_Prueba + ", nombre=" + nombre + ", descripcion=" + descripcion + ", porcentaje=" + porcentaje + ", tipo_de_prueba=" + tipo_de_prueba + '}';
+        return "Prueba: " + nombre + ".\n" +
+                "ID de la prueba: " + id_Prueba + ".\n" +
+                "Descripcion: " + descripcion + ".\n" +
+                "Porcentaje: " + porcentaje + "% .\n" ;
+    }
+    
+    public void setPrueba(int id_Prueba,String nombre, double porcentaje, String tipo_de_prueba){
+        setId_Prueba(id_Prueba);
+        setNombre(nombre);
+        setDescripcion(descripcion);
+        setPorcentaje(porcentaje);
+        setTipo_de_prueba(tipo_de_prueba);
     }
 }
