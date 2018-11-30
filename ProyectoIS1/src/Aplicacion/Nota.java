@@ -14,16 +14,21 @@ public class Nota {
         this.prueba = prueba;
     }
 
-    public void setCalificacion(double calificacion) {
-        this.calificacion = calificacion;
+    public void setCalificacion(double nota) {
+        this.calificacion = nota;
     }
     
     public void mostrarNota(){
         toString();
     }
 
+    public Prueba getPrueba() {
+        return prueba;
+    }
+    
     @Override
     public String toString() {
-        return "Nota{" + "prueba=" + prueba + ", calificacion=" + calificacion + '}';
+        return "Prueba: " + prueba
+                + "Nota: " + calificacion;
     }
 }
