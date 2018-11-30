@@ -19,7 +19,10 @@ public class Grupo {
         listaAlumnosGrupo = new ArrayList();
     }
 
-    
+    public int getId_Grupo() {
+        return id_Grupo;
+    }
+
     public void setId_Grupo(int id_Grupo) {
         this.id_Grupo = id_Grupo;
     }

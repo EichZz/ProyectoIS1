@@ -27,6 +27,10 @@ public class Alumno {
         this.apellidos = apellidos;
     }
 
+    public String getDni() {
+        return dni;
+    }
+    
     public void setDni(String dni) {
         this.dni = dni;
     }
@@ -52,11 +56,11 @@ public class Alumno {
     }
     
     public Nota getNota(Prueba p){
-        Iterator it = listaNotas.listIterator();
+        Iterator<Nota> it = listaNotas.listIterator();
         boolean enc = false;
         Nota n = null;
         while(it.hasNext() && !enc){
-            Nota aux = (Nota) it.next();
+            Nota aux = it.next();
             if(p == aux.getPrueba()){
                 enc = true;
                 n = aux;
