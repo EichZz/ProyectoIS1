@@ -46,19 +46,94 @@ public class Pantalla {
     }
 
     private void ConsultaPruebasEvaluables() {
-        //System.out.println(controladora.consultaPruebas());
+        System.out.println(controladora.consultaPruebas());
     }
 
     private void AñadirDatosAlumnos() {
+        controladora.añadirAlumno();
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("Introduzca el nombre del alumno: ");
+        String nom = s.nextLine();
+        System.out.println("Introduzca los apellidos del alumno: ");
+        String apell = s.nextLine();
+        System.out.println("Introduzca el DNI del alumno: ");
+        String dni = s.nextLine();
+        System.out.println("Introduzca el grupo de EPD: ");
+        int epd = s.nextInt();
+
+        controladora.introducirDatosAlumnos(nom, apell, dni, epd);
+
+        System.out.println(controladora.mostrarAlumno()
+                + "\n¿Desea confirmar el alumno?"
+                + "\n\t1. Sí"
+                + "\n\t0. No");
+        int opc = s.nextInt();
+        if (opc == 1) {
+            controladora.confirmarAlumno();
+            System.out.println("El alumno se añadió con éxito");
+        } else {
+            System.out.println("Operación cancelada");
+        }
     }
 
     private void IntroducirNotaAlumno() {
+        controladora.añadirNotaAlumno();
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("Introduzca el ID de la prueba: ");
+        int id = s.nextInt();
+        System.out.println("Introduzca el DNI del alumno: ");
+        String dni = s.nextLine();
+        System.out.println("Introduzca la calificacion: ");
+        double calif = s.nextLong();
+
+        controladora.introducirDatosNota(id, dni, calif);
+
+        System.out.println(controladora.mostrarNota()
+                + "\n¿Desea confirmar la nota del alumno?"
+                + "\n\t1. Sí"
+                + "\n\t0. No");
+        int opc = s.nextInt();
+        if (opc == 1) {
+            controladora.confirmarNotaAlumno();
+            System.out.println("La nota se añadió al alumno con éxito");
+        } else {
+            System.out.println("Operación cancelada");
+        }
     }
 
     private void IntroducirNotaClase() {
     }
 
     private void CrearGruposTrabajo() {
+        controladora.crearGrupoTrabajo();
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("Introduzca el ID del grupo: ");
+        int id = s.nextInt();
+        System.out.println("Introduzca el numero de alumnos del grupo: ");
+        int n = s.nextInt();
+
+        controladora.introducirDatosGrupo(id, n);
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Introduzca el DNI del siguiente alumno: ");
+            String dni = s.nextLine();
+            controladora.introducirDNIAlumno(dni);
+        }
+        
+        System.out.println(controladora.mostrarGrupo()
+                + "\n¿Desea confirmar el grupo?"
+                + "\n\t1. Sí"
+                + "\n\t0. No");
+        int opc = s.nextInt();
+        if (opc == 1) {
+            controladora.confirmarGrupo();
+            System.out.println("El grupo se añadió con éxito");
+        } else {
+            System.out.println("Operación cancelada");
+        }
     }
 
     private void IntroducirNotaGrupo() {

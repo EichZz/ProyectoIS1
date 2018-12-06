@@ -59,14 +59,11 @@ public class Controladora {
         asignatura.addAlumno(alumnoActual);
     }
 
-    public Nota añadirNotaAlumno() {
-
+    public void añadirNotaAlumno() {
         notaActual = new Nota();
-        return notaActual;
     }
 
     public void introducirDatosNota(int id_prueba, String dni, double nota) {
-
         pruebaActual = asignatura.getPrueba(id_prueba);
         notaActual.setPrueba(pruebaActual);
         alumnoActual = asignatura.getAlumno(dni);
@@ -78,8 +75,6 @@ public class Controladora {
     }
 
     public void confirmarNotaAlumno() {
-
-        notaActual.mostrarNota();
         alumnoActual.addNota(notaActual);
     }
 
