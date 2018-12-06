@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Aplicacion;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Asignatura {
 
@@ -55,14 +48,9 @@ public class Asignatura {
         return it;
     }
     
-    public List getAlumnos(){
-        List Alumnos = new ArrayList();
+    public Iterator getAlumnos(){
         Iterator<Alumno> it = ListaAlumnos.listIterator();
-        while(it.hasNext()){
-            Alumno aux = it.next();
-            Alumnos.add(aux);
-        }
-        return Alumnos;
+        return it;
     }
 
     public Alumno getAlumno(String dni) {
