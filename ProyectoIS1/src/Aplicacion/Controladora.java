@@ -59,10 +59,9 @@ public class Controladora {
         asignatura.addAlumno(alumnoActual);
     }
 
-    public Nota añadirNotaAlumno() {
+    public void añadirNotaAlumno() {
 
         notaActual = new Nota();
-        return notaActual;
     }
 
     public void introducirDatosNota(int id_prueba, String dni, double nota) {
@@ -79,7 +78,6 @@ public class Controladora {
 
     public void confirmarNotaAlumno() {
 
-        notaActual.mostrarNota();
         alumnoActual.addNota(notaActual);
     }
 
@@ -109,8 +107,8 @@ public class Controladora {
     }
 
     public void introducirDNIAlumno(String dni) {
-        Alumno a = asignatura.getAlumno(dni);
-        grupoActual.addAlumno(a);
+        alumnoActual = asignatura.getAlumno(dni);
+        grupoActual.addAlumno(alumnoActual);
     }
 
     public String mostrarGrupo() {
@@ -125,9 +123,21 @@ public class Controladora {
     }
 
     public void seleccionarGrupo(int id_grupo) {
+        grupoActual = asignatura.getGrupo(id_grupo);
     }
 
-    public void introducirNotaGrupo(int id_prueba, Nota nota) {
+    public void introducirNotaGrupo(int id_prueba, double nota) {
+        pruebaActual = asignatura.getPrueba(id_prueba);
+        Iterator<Alumno> it = grupoActual.getAlumnos();
+        
+        while(it.hasNext()){
+            alumnoActual = it.next();
+            System.out.println(alumnoActual.mostrarAlumno());
+            notaActual = new Nota(pruebaActual, nota);
+            System.out.println(notaActual.mostrarNota());
+            alumnoActual.addNota(notaActual);  
+        }
+
     }
 
     public void confirmarNotaGrupo() {

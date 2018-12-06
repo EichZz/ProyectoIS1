@@ -34,6 +34,10 @@ public class Grupo {
     public int getnAlumnos() {
         return nAlumnos;
     }
+
+    public Iterator getAlumnos() {
+        return listaAlumnosGrupo.iterator();
+    }
     
     
     

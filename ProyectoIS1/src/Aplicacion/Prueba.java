@@ -44,8 +44,8 @@ public class Prueba {
         this.tipo_de_prueba = tipo_de_prueba;
     }
     
-    public void MostrarPrueba(){
-        toString();
+    public String MostrarPrueba(){
+        return toString();
     }
 
     @Override
