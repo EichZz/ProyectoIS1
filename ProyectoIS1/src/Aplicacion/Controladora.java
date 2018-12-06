@@ -39,6 +39,7 @@ public class Controladora {
     }
 
     public void consultaPruebas() {
+    asignatura.getPruebas();
     }
 
     public void mostrarPruebas() {

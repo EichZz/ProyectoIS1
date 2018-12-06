@@ -9,6 +9,9 @@ public class Prueba {
     private Double porcentaje;
     private String tipo_de_prueba;
 
+    public Prueba() {
+    }
+
     public Prueba(int id_Prueba, String nombre, String descripcion, Double porcentaje, String tipo_de_prueba) {
         this.id_Prueba = id_Prueba;
         this.nombre = nombre;
