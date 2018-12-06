@@ -16,9 +16,37 @@ public class Pantalla {
     private Controladora controladora;
 
     private void AñadirPruebasEvaluables() {
+        controladora.añadirPrueba();
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("Introduzca el ID de la prueba: ");
+        int id = s.nextInt();
+        System.out.println("Introduzca el nombre de la prueba: ");
+        String nom = s.nextLine();
+        System.out.println("Introduzca la descripción de la prueba: ");
+        String desc = s.nextLine();
+        System.out.println("Introduzca el porcentaje de la prueba: ");
+        double porc = s.nextLong();
+        System.out.println("Introduzca el tipo de prueba: ");
+        String tipo = s.nextLine();
+
+        controladora.introducirDatosPrueba(id, nom, desc, porc, tipo);
+
+        System.out.println(controladora.mostrarPrueba()
+                + "\n¿Desea confirmar la prueba?"
+                + "\n\t1. Sí"
+                + "\n\t0. No");
+        int opc = s.nextInt();
+        if (opc == 1) {
+            controladora.confirmarPrueba();
+            System.out.println("La prueba se añadió con éxito");
+        } else {
+            System.out.println("Operación cancelada");
+        }
     }
 
     private void ConsultaPruebasEvaluables() {
+        //System.out.println(controladora.consultaPruebas());
     }
 
     private void AñadirDatosAlumnos() {

@@ -9,9 +9,8 @@ public class Controladora {
     private Nota notaActual;
     private Prueba pruebaActual;
 
-    public Prueba añadirPrueba() {
+    public void añadirPrueba() {
         pruebaActual = new Prueba();
-        return pruebaActual;
     }
 
     public void introducirDatosPrueba(int id_prueba, String nomb, String desc, double porc, String tipo_prueba) {
@@ -36,13 +35,11 @@ public class Controladora {
 
     
     
-    public Alumno añadirAlumno() {
+    public void añadirAlumno() {
         alumnoActual = new Alumno();
-        return alumnoActual;
     }
 
     public void introducirDatosAlumnos(String nom, String apellidos, String dni, int grupoEPD) {
-        alumnoActual = añadirAlumno();
         alumnoActual.setNombre(nom);
         alumnoActual.setApellidos(apellidos);
         alumnoActual.setDni(dni);
