@@ -70,21 +70,33 @@ public class Controladora {
 
     public void introducirDatosNota(int id_prueba, String dni, double nota) {
 
+        pruebaActual = asignatura.getPrueba(id_prueba);
+        notaActual.setPrueba(pruebaActual);
+        alumnoActual = asignatura.getAlumno(dni);
+        notaActual.setCalificacion(nota);
     }
 
-    public void mostrarNota() {
+    public String mostrarNota() {
+        return notaActual.toString();
     }
 
     public void confirmarNotaAlumno() {
+
+        notaActual.mostrarNota();
+        alumnoActual.addNota(notaActual);
     }
 
     public void añadirNotaClase() {
     }
 
     public void seleccionarPrueba(int id_prueba) {
+
+        pruebaActual = asignatura.getPrueba(id_prueba);
     }
 
-    public void introducirDatosNota(Nota nota) {
+    public void introducirDatosNota(double nota) {
+
+        Iterator<Alumno> it = (Iterator<Alumno>) asignatura.getAlumnos();
     }
 
     public void confirmarNota() {
@@ -105,11 +117,11 @@ public class Controladora {
     }
 
     public String mostrarGrupo() {
-       return grupoActual.toString();
+        return grupoActual.toString();
     }
 
     public void confirmarGrupo() {
-    asignatura.addGrupo(grupoActual);
+        asignatura.addGrupo(grupoActual);
     }
 
     public void añadirNotaGrupo() {
