@@ -30,6 +30,12 @@ public class Grupo {
     public void setNumero(int numero) {
         this.nAlumnos = numero;
     }
+
+    public int getnAlumnos() {
+        return nAlumnos;
+    }
+    
+    
     
     public void mostrarGrupo(){
         toString();
