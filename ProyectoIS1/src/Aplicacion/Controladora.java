@@ -79,7 +79,7 @@ public class Controladora {
 
         alumnoActual.addNota(notaActual);
     }
-
+//cambiar nota clase
     public void añadirNotaClase() {
     }
 
@@ -105,7 +105,7 @@ public class Controladora {
     public void confirmarNota() {
         alumnoActual.addNota(notaActual);
     }
-
+//fin cambiar nota clase
     public void crearGrupoTrabajo() {
         grupoActual = new Grupo();
     }
@@ -127,7 +127,7 @@ public class Controladora {
     public void confirmarGrupo() {
         asignatura.addGrupo(grupoActual);
     }
-
+//cambiar nota grupo
     public void añadirNotaGrupo() {
     }
 
@@ -151,7 +151,7 @@ public class Controladora {
 
     public void confirmarNotaGrupo() {
     }
-
+//fin cambiar nota grupo
     public void consultaAlumno() {
     }
 
@@ -166,7 +166,7 @@ public class Controladora {
         }
         return s;
     }
-
+//cambiar consulta grupo
     public String consultaGrupo() {
 
         Iterator<Prueba> it = asignatura.getPruebas();

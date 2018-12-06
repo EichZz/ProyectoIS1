@@ -135,7 +135,7 @@ public class Pantalla {
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el DNI del alumno: ");
         String dni = s.nextLine();
-        //System.out.println(controladora.seleccionarAlumno(dni));        
+        System.out.println(controladora.seleccionarAlumno(dni));        
     }
 
     private void ConsultaGrupo() {
