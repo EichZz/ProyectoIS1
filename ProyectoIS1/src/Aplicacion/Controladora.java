@@ -80,7 +80,8 @@ public class Controladora {
         alumnoActual.addNota(notaActual);
     }
 
-    public void añadirNotaClase() {}
+    public void añadirNotaClase() {
+    }
 
     public void seleccionarPrueba(int id_prueba) {
 
@@ -90,8 +91,8 @@ public class Controladora {
     public void introducirDatosNota(double nota) {
 
         Iterator<Alumno> it = asignatura.getAlumnos();
-        
-        while(it.hasNext()){
+
+        while (it.hasNext()) {
             mostrarAlumno();
             añadirNotaAlumno();
             notaActual.setPrueba(pruebaActual);
@@ -137,13 +138,13 @@ public class Controladora {
     public void introducirNotaGrupo(int id_prueba, double nota) {
         pruebaActual = asignatura.getPrueba(id_prueba);
         Iterator<Alumno> it = grupoActual.getAlumnos();
-        
-        while(it.hasNext()){
+
+        while (it.hasNext()) {
             alumnoActual = it.next();
             System.out.println(alumnoActual.mostrarAlumno());
             notaActual = new Nota(pruebaActual, nota);
             System.out.println(notaActual.mostrarNota());
-            alumnoActual.addNota(notaActual);  
+            alumnoActual.addNota(notaActual);
         }
 
     }
@@ -151,38 +152,33 @@ public class Controladora {
     public void confirmarNotaGrupo() {
     }
 
-    public String consultaAlumno() {
-        
-        Iterator<Alumno> it = asignatura.getAlumnos();
-        
-        String s = "";
-        
+    public void consultaAlumno() {
+    }
+
+    public String seleccionarAlumno(String dni) {
+        alumnoActual = asignatura.getAlumno(dni);
+        String s = alumnoActual.mostrarAlumno();
+         
+        Iterator<Nota> it= alumnoActual.getNotas();
         while(it.hasNext()){
-            Alumno a = it.next();
-            seleccionarAlumno(a.getDni());
-            mostrarNota();
-            s += a.toString() + "\n";
+            notaActual = it.next();
+            s+= notaActual.mostrarNota() + "\n";
         }
         return s;
     }
 
-    public void seleccionarAlumno(String dni) {
-        
-        alumnoActual = asignatura.getAlumno(dni);
-    }
-
     public String consultaGrupo() {
-        
+
         Iterator<Prueba> it = asignatura.getPruebas();
-        
+
         String s = "";
-        
-        while(it.hasNext()){
+
+        while (it.hasNext()) {
             Prueba p = it.next();
             mostrarPrueba();
-            
+
             Iterator<Alumno> it2 = asignatura.getAlumnos();
-            while(it2.hasNext()){
+            while (it2.hasNext()) {
                 Alumno a = it2.next();
                 mostrarAlumno();
                 mostrarNota();

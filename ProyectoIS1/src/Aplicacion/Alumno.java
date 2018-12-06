@@ -38,6 +38,11 @@ public class Alumno {
         return toString();
     }
 
+    public Iterator getNotas() {
+        return listaNotas.iterator();
+    }
+    
+
     @Override
     public String toString() {
         return "Alumno: " + "Nombre: " + nombre + " " + apellidos
