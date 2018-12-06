@@ -41,13 +41,11 @@ public class Controladora {
         return s;
     }
 
-    public Alumno añadirAlumno() {
+    public void añadirAlumno() {
         alumnoActual = new Alumno();
-        return alumnoActual;
     }
 
     public void introducirDatosAlumnos(String nom, String apellidos, String dni, int grupoEPD) {
-        alumnoActual = añadirAlumno();
         alumnoActual.setNombre(nom);
         alumnoActual.setApellidos(apellidos);
         alumnoActual.setDni(dni);
