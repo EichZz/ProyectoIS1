@@ -50,14 +50,9 @@ public class Asignatura {
         return p;
     }
 
-    public List getPruebas() {
-        List Pruebas = new ArrayList();
+    public Iterator getPruebas() {
         Iterator<Prueba> it = ListaPruebas.listIterator();
-        while (it.hasNext()) {
-            Prueba aux = it.next();
-            Pruebas.add(aux);
-        }
-        return Pruebas;
+        return it;
     }
 
     public Alumno getAlumno(String dni) {

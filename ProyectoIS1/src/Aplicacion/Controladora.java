@@ -1,5 +1,6 @@
-
 package Aplicacion;
+
+import java.util.*;
 
 public class Controladora {
 
@@ -21,24 +22,25 @@ public class Controladora {
         pruebaActual.setPorcentaje(porc);
         pruebaActual.setTipo_de_prueba(tipo_prueba);
     }
-    
-    public String mostrarPrueba(){
+
+    public String mostrarPrueba() {
         return pruebaActual.toString();
     }
 
     public void confirmarPrueba() {
-       asignatura.addPrueba(pruebaActual);
+        asignatura.addPrueba(pruebaActual);
     }
 
-    public void consultaPruebas() {
-    asignatura.getPruebas();
+    public String consultaPruebas() {
+        Iterator<Prueba> it = asignatura.getPruebas();
+        String s = "";
+        while (it.hasNext()) {
+            Prueba aux = it.next();
+            s += aux.toString() + "\n";
+        }
+        return s;
     }
 
-    public String mostrarPruebas(){
-        
-    }
-    
-    
     public Alumno añadirAlumno() {
         alumnoActual = new Alumno();
         return alumnoActual;
@@ -53,7 +55,7 @@ public class Controladora {
     }
 
     public String mostrarAlumno() {
-       return alumnoActual.toString();
+        return alumnoActual.toString();
     }
 
     public void confirmarAlumno() {
@@ -61,13 +63,13 @@ public class Controladora {
     }
 
     public Nota añadirNotaAlumno() {
-        
+
         notaActual = new Nota();
         return notaActual;
     }
 
-    public void introducirDatosNota(int id_prueba, String dni, Nota nota) {
-        
+    public void introducirDatosNota(int id_prueba, String dni, double nota) {
+
     }
 
     public void mostrarNota() {
@@ -89,18 +91,25 @@ public class Controladora {
     }
 
     public void crearGrupoTrabajo() {
+        grupoActual = new Grupo();
     }
 
     public void introducirDatosGrupo(int id_grupo, int numero) {
+        grupoActual.setId_Grupo(id_grupo);
+        grupoActual.setNumero(numero);
     }
 
     public void introducirDNIAlumno(String dni) {
+        Alumno a = asignatura.getAlumno(dni);
+        grupoActual.addAlumno(a);
     }
 
-    public void mostrarGrupo() {
+    public String mostrarGrupo() {
+       return grupoActual.toString();
     }
 
     public void confirmarGrupo() {
+    asignatura.addGrupo(grupoActual);
     }
 
     public void añadirNotaGrupo() {
