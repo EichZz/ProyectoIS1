@@ -5,6 +5,9 @@ public class Nota {
     private Prueba prueba;
     private double calificacion;
 
+    public Nota() {
+    }
+
     public Nota(Prueba prueba, double calificacion) {
         this.prueba = prueba;
         this.calificacion = calificacion;
