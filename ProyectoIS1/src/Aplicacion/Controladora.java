@@ -1,5 +1,6 @@
 
 package Aplicacion;
+import java.util.*;
 
 public class Controladora {
 
@@ -9,9 +10,8 @@ public class Controladora {
     private Nota notaActual;
     private Prueba pruebaActual;
 
-    public Prueba añadirPrueba() {
+    public void añadirPrueba() {
         pruebaActual = new Prueba();
-        return pruebaActual;
     }
 
     public void introducirDatosPrueba(int id_prueba, String nomb, String desc, double porc, String tipo_prueba) {
@@ -33,16 +33,13 @@ public class Controladora {
     public void consultaPruebas() {
     asignatura.getPruebas();
     }
-
+  
     
-    
-    public Alumno añadirAlumno() {
+    public void añadirAlumno() {
         alumnoActual = new Alumno();
-        return alumnoActual;
     }
 
     public void introducirDatosAlumnos(String nom, String apellidos, String dni, int grupoEPD) {
-        alumnoActual = añadirAlumno();
         alumnoActual.setNombre(nom);
         alumnoActual.setApellidos(apellidos);
         alumnoActual.setDni(dni);
@@ -57,29 +54,39 @@ public class Controladora {
         asignatura.addAlumno(alumnoActual);
     }
 
-    public Nota añadirNotaAlumno() {
-        
+    public void añadirNotaAlumno() {
         notaActual = new Nota();
-        return notaActual;
     }
 
-    public void introducirDatosNota(int id_prueba, String dni, Nota nota) {
+    public void introducirDatosNota(int id_prueba, String dni, double nota) {
         
+        pruebaActual = asignatura.getPrueba(id_prueba);
+        notaActual.setPrueba(pruebaActual);
+        alumnoActual = asignatura.getAlumno(dni);
+        notaActual.setCalificacion(nota);
     }
 
-    public void mostrarNota() {
+    public String mostrarNota() {
+        return notaActual.toString();
     }
 
     public void confirmarNotaAlumno() {
+        
+        notaActual.mostrarNota();
+        alumnoActual.addNota(notaActual);
     }
 
     public void añadirNotaClase() {
     }
 
     public void seleccionarPrueba(int id_prueba) {
+        
+        pruebaActual = asignatura.getPrueba(id_prueba);
     }
 
-    public void introducirDatosNota(Nota nota) {
+    public void introducirDatosNota(double nota) {
+        
+        Iterator<Alumno> it = (Iterator<Alumno>) asignatura.getAlumnos();
     }
 
     public void confirmarNota() {

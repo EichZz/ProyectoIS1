@@ -59,6 +59,16 @@ public class Asignatura {
         }
         return Pruebas;
     }
+    
+    public List getAlumnos(){
+        List Alumnos = new ArrayList();
+        Iterator<Alumno> it = ListaAlumnos.listIterator();
+        while(it.hasNext()){
+            Alumno aux = it.next();
+            Alumnos.add(aux);
+        }
+        return Alumnos;
+    }
 
     public Alumno getAlumno(String dni) {
         Iterator<Alumno> it = ListaAlumnos.listIterator();
