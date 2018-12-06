@@ -34,6 +34,9 @@ public class Controladora {
     asignatura.getPruebas();
     }
 
+    public String mostrarPruebas(){
+        
+    }
     
     
     public Alumno añadirAlumno() {
