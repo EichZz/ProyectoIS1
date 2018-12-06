@@ -55,7 +55,6 @@ public class Controladora {
     public void confirmarAlumno() {
         asignatura.addAlumno(alumnoActual);
     }
-    
 
     public Nota añadirNotaAlumno() {
         
