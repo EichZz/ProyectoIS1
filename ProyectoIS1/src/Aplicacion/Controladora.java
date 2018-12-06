@@ -8,18 +8,26 @@ public class Controladora {
     private Asignatura asignatura;
     private Nota notaActual;
     private Prueba pruebaActual;
- 
-    
-    public void añadirPrueba() {
+
+    public Prueba añadirPrueba() {
+        pruebaActual = new Prueba();
+        return pruebaActual;
     }
 
     public void introducirDatosPrueba(int id_prueba, String nomb, String desc, double porc, String tipo_prueba) {
+        pruebaActual.setDescripcion(desc);
+        pruebaActual.setId_Prueba(id_prueba);
+        pruebaActual.setNombre(nomb);
+        pruebaActual.setPorcentaje(porc);
+        pruebaActual.setTipo_de_prueba(tipo_prueba);
     }
-
-    public void mostrarPruebas() {
+    
+    public String mostrarPrueba(){
+        return pruebaActual.toString();
     }
 
     public void confirmarPrueba() {
+       asignatura.addPrueba(pruebaActual);
     }
 
     public void consultaPruebas() {
@@ -40,21 +48,23 @@ public class Controladora {
         alumnoActual.setGrupo_de_EPD(grupoEPD);
     }
 
-    public void mostrarAlumno() {
-        alumnoActual.toString();
+    public String mostrarAlumno() {
+       return alumnoActual.toString();
     }
 
     public void confirmarAlumno() {
-        mostrarAlumno();
-        
+        asignatura.addAlumno(alumnoActual);
     }
     
-    
 
-    public void añadirNotaAlumno() {
+    public Nota añadirNotaAlumno() {
+        
+        notaActual = new Nota();
+        return notaActual;
     }
 
     public void introducirDatosNota(int id_prueba, String dni, Nota nota) {
+        
     }
 
     public void mostrarNota() {
@@ -63,8 +73,6 @@ public class Controladora {
     public void confirmarNotaAlumno() {
     }
 
-    
-    
     public void añadirNotaClase() {
     }
 
@@ -77,8 +85,6 @@ public class Controladora {
     public void confirmarNota() {
     }
 
-    
-    
     public void crearGrupoTrabajo() {
     }
 
@@ -93,8 +99,6 @@ public class Controladora {
 
     public void confirmarGrupo() {
     }
-    
-    
 
     public void añadirNotaGrupo() {
     }
@@ -107,18 +111,13 @@ public class Controladora {
 
     public void confirmarNotaGrupo() {
     }
-        
-        
 
     public void consultaAlumno() {
     }
 
     public void seleccionarAlumno(int dni) {
     }
-    
-    
 
     public void consultaGrupo() {
     }
-
 }
