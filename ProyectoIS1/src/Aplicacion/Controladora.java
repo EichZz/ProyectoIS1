@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Aplicacion;
 
-/**
- *
- * @author hecto
- */
 public class Controladora {
 
     private Grupo grupoActual;
@@ -35,16 +27,26 @@ public class Controladora {
 
     
     
-    public void añadirAlumno() {
+    public Alumno añadirAlumno() {
+        alumnoActual = new Alumno();
+        return alumnoActual;
     }
 
     public void introducirDatosAlumnos(String nom, String apellidos, String dni, int grupoEPD) {
+        alumnoActual = añadirAlumno();
+        alumnoActual.setNombre(nom);
+        alumnoActual.setApellidos(apellidos);
+        alumnoActual.setDni(dni);
+        alumnoActual.setGrupo_de_EPD(grupoEPD);
     }
 
     public void mostrarAlumno() {
+        alumnoActual.toString();
     }
 
     public void confirmarAlumno() {
+        mostrarAlumno();
+        
     }
     
     

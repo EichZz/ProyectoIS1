@@ -19,6 +19,8 @@ public class Alumno {
     private int grupo_de_EPD;
     private List<Nota> listaNotas;
 
+    public Alumno() {}
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
