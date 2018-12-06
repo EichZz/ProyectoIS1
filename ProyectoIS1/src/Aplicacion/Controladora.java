@@ -60,6 +60,7 @@ public class Controladora {
     }
 
     public void añadirNotaAlumno() {
+
         notaActual = new Nota();
     }
 
@@ -75,11 +76,11 @@ public class Controladora {
     }
 
     public void confirmarNotaAlumno() {
+
         alumnoActual.addNota(notaActual);
     }
 
-    public void añadirNotaClase() {
-    }
+    public void añadirNotaClase() {}
 
     public void seleccionarPrueba(int id_prueba) {
 
@@ -88,10 +89,20 @@ public class Controladora {
 
     public void introducirDatosNota(double nota) {
 
-        Iterator<Alumno> it = (Iterator<Alumno>) asignatura.getAlumnos();
+        Iterator<Alumno> it = asignatura.getAlumnos();
+        
+        while(it.hasNext()){
+            mostrarAlumno();
+            añadirNotaAlumno();
+            notaActual.setPrueba(pruebaActual);
+            notaActual.setCalificacion(nota);
+            mostrarNota();
+            confirmarNota();
+        }
     }
 
     public void confirmarNota() {
+        alumnoActual.addNota(notaActual);
     }
 
     public void crearGrupoTrabajo() {
@@ -104,8 +115,8 @@ public class Controladora {
     }
 
     public void introducirDNIAlumno(String dni) {
-        Alumno a = asignatura.getAlumno(dni);
-        grupoActual.addAlumno(a);
+        alumnoActual = asignatura.getAlumno(dni);
+        grupoActual.addAlumno(alumnoActual);
     }
 
     public String mostrarGrupo() {
@@ -120,20 +131,64 @@ public class Controladora {
     }
 
     public void seleccionarGrupo(int id_grupo) {
+        grupoActual = asignatura.getGrupo(id_grupo);
     }
 
-    public void introducirNotaGrupo(int id_prueba, Nota nota) {
+    public void introducirNotaGrupo(int id_prueba, double nota) {
+        pruebaActual = asignatura.getPrueba(id_prueba);
+        Iterator<Alumno> it = grupoActual.getAlumnos();
+        
+        while(it.hasNext()){
+            alumnoActual = it.next();
+            System.out.println(alumnoActual.mostrarAlumno());
+            notaActual = new Nota(pruebaActual, nota);
+            System.out.println(notaActual.mostrarNota());
+            alumnoActual.addNota(notaActual);  
+        }
+
     }
 
     public void confirmarNotaGrupo() {
     }
 
-    public void consultaAlumno() {
+    public String consultaAlumno() {
+        
+        Iterator<Alumno> it = asignatura.getAlumnos();
+        
+        String s = "";
+        
+        while(it.hasNext()){
+            Alumno a = it.next();
+            seleccionarAlumno(a.getDni());
+            mostrarNota();
+            s += a.toString() + "\n";
+        }
+        return s;
     }
 
-    public void seleccionarAlumno(int dni) {
+    public void seleccionarAlumno(String dni) {
+        
+        alumnoActual = asignatura.getAlumno(dni);
     }
 
-    public void consultaGrupo() {
+    public String consultaGrupo() {
+        
+        Iterator<Prueba> it = asignatura.getPruebas();
+        
+        String s = "";
+        
+        while(it.hasNext()){
+            Prueba p = it.next();
+            mostrarPrueba();
+            
+            Iterator<Alumno> it2 = asignatura.getAlumnos();
+            while(it2.hasNext()){
+                Alumno a = it2.next();
+                mostrarAlumno();
+                mostrarNota();
+                s += a.toString() + "\n";
+            }
+        }
+        return s;
     }
 }

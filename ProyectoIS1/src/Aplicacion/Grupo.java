@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Aplicacion;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Grupo {
     
@@ -33,6 +27,10 @@ public class Grupo {
 
     public int getnAlumnos() {
         return nAlumnos;
+    }
+
+    public Iterator getAlumnos() {
+        return listaAlumnosGrupo.iterator();
     }
     
     

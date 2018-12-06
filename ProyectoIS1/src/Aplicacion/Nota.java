@@ -21,8 +21,8 @@ public class Nota {
         this.calificacion = nota;
     }
     
-    public void mostrarNota(){
-        toString();
+    public String mostrarNota(){
+        return toString();
     }
 
     public Prueba getPrueba() {
