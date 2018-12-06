@@ -11,8 +11,13 @@ package Aplicacion;
  */
 public class Controladora {
 
-    int numPruebas;
-
+    private Grupo grupoActual;
+    private Alumno alumnoActual;
+    private Asignatura asignatura;
+    private Nota notaActual;
+    private Prueba pruebaActual;
+ 
+    
     public void añadirPrueba() {
     }
 
