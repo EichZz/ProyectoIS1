@@ -210,10 +210,8 @@ public class PantallaTest {
     @Test
     public void testConsultaGrupo() {
         System.out.println("ConsultaGrupo");
-        Pantalla instance = new Pantalla();
-        instance.ConsultaGrupo();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Controladora c = new Controladora();
+        c.consultaGrupo();
     }
 
 }
