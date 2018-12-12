@@ -40,6 +40,10 @@ public class Prueba {
         this.descripcion = descripcion;
     }
 
+    public Double getPorcentaje() {
+        return porcentaje;
+    }
+
     public void setPorcentaje(Double porcentaje) {
         this.porcentaje = porcentaje;
     }

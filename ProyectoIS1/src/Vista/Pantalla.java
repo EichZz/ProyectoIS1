@@ -26,7 +26,7 @@ public class Pantalla {
         System.out.println("Introduzca la descripción de la prueba: ");
         String desc = s.next();
         System.out.println("Introduzca el porcentaje de la prueba: ");
-        double porc = (double)s.nextLong();
+        double porc = s.nextDouble();
         System.out.println("Introduzca el tipo de prueba: ");
         String tipo = s.next();
 
@@ -84,9 +84,9 @@ public class Pantalla {
         System.out.println("Introduzca el ID de la prueba: ");
         int id = s.nextInt();
         System.out.println("Introduzca el DNI del alumno: ");
-        String dni = s.nextLine();
+        String dni = s.next();
         System.out.println("Introduzca la calificacion: ");
-        double calif = s.nextLong();
+        double calif = s.nextDouble();
 
         controladora.introducirDatosNota(id, dni, calif);
 
@@ -117,7 +117,7 @@ public class Pantalla {
             controladora.setAlumnoActual(it.next());
             System.out.println(controladora.getAlumnoActual().toString());
             System.out.println("Introduzca la nota del alumno: ");
-            calificacion = s.nextLong();
+            calificacion = s.nextDouble();
             controladora.introducirDatosNota(calificacion);
         }
     }
@@ -135,7 +135,7 @@ public class Pantalla {
 
         for (int i = 0; i < n; i++) {
             System.out.println("Introduzca el DNI del siguiente alumno: ");
-            String dni = s.nextLine();
+            String dni = s.next();
             controladora.introducirDNIAlumno(dni);
         }
 
@@ -162,14 +162,14 @@ public class Pantalla {
         System.out.println("Introduzca el ID de la prueba: ");
         int idp = s.nextInt();
         System.out.println("Introduzca la nota del alumno: ");
-        double calificacion = s.nextLong();
+        double calificacion = s.nextDouble();
         controladora.introducirNotaGrupo(idp, calificacion);
     }
 
     private void ConsultaAlumno() {
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el DNI del alumno: ");
-        String dni = s.nextLine();
+        String dni = s.next();
         System.out.println(controladora.seleccionarAlumno(dni));
     }
 
