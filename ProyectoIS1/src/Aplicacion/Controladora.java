@@ -10,6 +10,10 @@ public class Controladora {
     private Nota notaActual;
     private Prueba pruebaActual;
 
+    public Controladora() {
+        asignatura = new Asignatura("Asignatura");
+    }    
+    
     public void añadirPrueba() {
         pruebaActual = new Prueba();
     }
@@ -79,33 +83,21 @@ public class Controladora {
 
         alumnoActual.addNota(notaActual);
     }
-//cambiar nota clase
+
     public void añadirNotaClase() {
     }
 
-    public void seleccionarPrueba(int id_prueba) {
-
+    public void seleccionarPrueba(int id_prueba) {        
         pruebaActual = asignatura.getPrueba(id_prueba);
     }
 
     public void introducirDatosNota(double nota) {
-
-        Iterator<Alumno> it = asignatura.getAlumnos();
-
-        while (it.hasNext()) {
-            mostrarAlumno();
-            añadirNotaAlumno();
-            notaActual.setPrueba(pruebaActual);
-            notaActual.setCalificacion(nota);
-            mostrarNota();
-            confirmarNota();
-        }
-    }
-
-    public void confirmarNota() {
+        notaActual = new Nota();
+        notaActual.setCalificacion(nota);
+        notaActual.setPrueba(pruebaActual);
         alumnoActual.addNota(notaActual);
     }
-//fin cambiar nota clase
+   
     public void crearGrupoTrabajo() {
         grupoActual = new Grupo();
     }
@@ -127,7 +119,7 @@ public class Controladora {
     public void confirmarGrupo() {
         asignatura.addGrupo(grupoActual);
     }
-//cambiar nota grupo
+
     public void añadirNotaGrupo() {
     }
 
@@ -141,17 +133,11 @@ public class Controladora {
 
         while (it.hasNext()) {
             alumnoActual = it.next();
-            System.out.println(alumnoActual.mostrarAlumno());
             notaActual = new Nota(pruebaActual, nota);
-            System.out.println(notaActual.mostrarNota());
             alumnoActual.addNota(notaActual);
         }
-
     }
 
-    public void confirmarNotaGrupo() {
-    }
-//fin cambiar nota grupo
     public void consultaAlumno() {
     }
 
@@ -171,20 +157,62 @@ public class Controladora {
 
         Iterator<Prueba> it = asignatura.getPruebas();
 
-        String s = "";
+        String s = "Pruebas:\t\t\t";
 
         while (it.hasNext()) {
             Prueba p = it.next();
-            mostrarPrueba();
-
-            Iterator<Alumno> it2 = asignatura.getAlumnos();
+            s+= p.getNombre() + "\t";            
+        }
+        
+        s+="Nota Final";
+        
+        Iterator<Alumno> it2 = asignatura.getAlumnos();
             while (it2.hasNext()) {
                 Alumno a = it2.next();
-                mostrarAlumno();
-                mostrarNota();
-                s += a.toString() + "\n";
+                
             }
-        }
         return s;
     }
+//fin
+    public Grupo getGrupoActual() {
+        return grupoActual;
+    }
+
+    public void setGrupoActual(Grupo grupoActual) {
+        this.grupoActual = grupoActual;
+    }
+
+    public Alumno getAlumnoActual() {
+        return alumnoActual;
+    }
+
+    public void setAlumnoActual(Alumno alumnoActual) {
+        this.alumnoActual = alumnoActual;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
+    }
+
+    public Nota getNotaActual() {
+        return notaActual;
+    }
+
+    public void setNotaActual(Nota notaActual) {
+        this.notaActual = notaActual;
+    }
+
+    public Prueba getPruebaActual() {
+        return pruebaActual;
+    }
+
+    public void setPruebaActual(Prueba pruebaActual) {
+        this.pruebaActual = pruebaActual;
+    }
+    
+    
 }

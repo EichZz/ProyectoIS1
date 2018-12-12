@@ -28,6 +28,10 @@ public class Prueba {
         this.id_Prueba = id_Prueba;
     }
 
+    public String getNombre() {
+        return nombre;
+    }    
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -53,7 +57,8 @@ public class Prueba {
         return "Prueba: " + nombre + ".\n" +
                 "ID de la prueba: " + id_Prueba + ".\n" +
                 "Descripcion: " + descripcion + ".\n" +
-                "Porcentaje: " + porcentaje + "% .\n" ;
+                "Porcentaje: " + porcentaje + "% .\n" +
+                "Tipo: " + tipo_de_prueba + ".\n";
     }
     
     public void setPrueba(int id_Prueba,String nombre, double porcentaje, String tipo_de_prueba){

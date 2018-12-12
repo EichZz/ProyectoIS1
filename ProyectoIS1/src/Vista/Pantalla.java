@@ -1,12 +1,20 @@
+package Vista;
 
-package Aplicacion;
-
+import Aplicacion.Alumno;
+import Aplicacion.Controladora;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Pantalla {
 
     private Controladora controladora;
 
+    public Pantalla() {
+        controladora = new Controladora();
+    }
+
+    
+    
     private void AñadirPruebasEvaluables() {
         controladora.añadirPrueba();
 
@@ -14,13 +22,13 @@ public class Pantalla {
         System.out.println("Introduzca el ID de la prueba: ");
         int id = s.nextInt();
         System.out.println("Introduzca el nombre de la prueba: ");
-        String nom = s.nextLine();
+        String nom = s.next();
         System.out.println("Introduzca la descripción de la prueba: ");
-        String desc = s.nextLine();
+        String desc = s.next();
         System.out.println("Introduzca el porcentaje de la prueba: ");
-        double porc = s.nextLong();
+        double porc = (double)s.nextLong();
         System.out.println("Introduzca el tipo de prueba: ");
-        String tipo = s.nextLine();
+        String tipo = s.next();
 
         controladora.introducirDatosPrueba(id, nom, desc, porc, tipo);
 
@@ -96,6 +104,22 @@ public class Pantalla {
     }
 
     private void IntroducirNotaClase() {
+        controladora.añadirNotaClase();
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("Introduzca el ID de la prueba: ");
+        int id = s.nextInt();
+        controladora.seleccionarPrueba(id);
+
+        Iterator<Alumno> it = controladora.getAsignatura().getAlumnos();
+        double calificacion;
+        while (it.hasNext()) {
+            controladora.setAlumnoActual(it.next());
+            System.out.println(controladora.getAlumnoActual().toString());
+            System.out.println("Introduzca la nota del alumno: ");
+            calificacion = s.nextLong();
+            controladora.introducirDatosNota(calificacion);
+        }
     }
 
     private void CrearGruposTrabajo() {
@@ -114,7 +138,7 @@ public class Pantalla {
             String dni = s.nextLine();
             controladora.introducirDNIAlumno(dni);
         }
-        
+
         System.out.println(controladora.mostrarGrupo()
                 + "\n¿Desea confirmar el grupo?"
                 + "\n\t1. Sí"
@@ -129,16 +153,28 @@ public class Pantalla {
     }
 
     private void IntroducirNotaGrupo() {
+        controladora.añadirNotaGrupo();
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("Introduzca el ID del grupo: ");
+        int idg = s.nextInt();
+        controladora.seleccionarGrupo(idg);
+        System.out.println("Introduzca el ID de la prueba: ");
+        int idp = s.nextInt();
+        System.out.println("Introduzca la nota del alumno: ");
+        double calificacion = s.nextLong();
+        controladora.introducirNotaGrupo(idp, calificacion);
     }
 
     private void ConsultaAlumno() {
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el DNI del alumno: ");
         String dni = s.nextLine();
-        System.out.println(controladora.seleccionarAlumno(dni));        
+        System.out.println(controladora.seleccionarAlumno(dni));
     }
 
     private void ConsultaGrupo() {
+        System.out.println(controladora.consultaGrupo());
     }
 
     public void MenuPrincipal() {

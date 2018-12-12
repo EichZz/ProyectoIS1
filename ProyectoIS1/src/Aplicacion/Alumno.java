@@ -14,6 +14,14 @@ public class Alumno {
 
     public Alumno() {}
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

@@ -1,6 +1,8 @@
 
 package Aplicacion;
 
+import Vista.Pantalla;
+
 public class main {
 
     
