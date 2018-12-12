@@ -5,7 +5,11 @@
  */
 package Vista;
 
+import Aplicacion.Alumno;
 import Aplicacion.Controladora;
+import Aplicacion.Nota;
+import Aplicacion.Prueba;
+import java.util.Iterator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -86,6 +90,9 @@ public class PantallaTest {
                 && c.getAlumnoActual().getApellidos().equals("Gracia")
                 && c.getAlumnoActual().getDni().equals("111111111")
                 && c.getAlumnoActual().getGrupo_de_EPD() == 1);
+        
+        c.añadirAlumno();
+        assertTrue(c.getAlumnoActual().equals(c.getAsignatura().getAlumno("111111111")));
     }
 
     /**
@@ -106,10 +113,29 @@ public class PantallaTest {
     @Test
     public void testIntroducirNotaClase() {
         System.out.println("IntroducirNotaClase");
-        Pantalla instance = new Pantalla();
-        instance.IntroducirNotaClase();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Controladora c = new Controladora();
+        c.añadirPrueba();
+        c.introducirDatosPrueba(0, "EPD1", "PrimeraEPD", 30, "EPD");
+
+        c.añadirNotaClase();
+        c.seleccionarPrueba(0);
+
+        Iterator<Alumno> it = c.getAsignatura().getAlumnos();
+        double calificacion;
+        while (it.hasNext()) {
+            c.setAlumnoActual(it.next());
+            System.out.println(c.getAlumnoActual().toString());
+            System.out.println("Introduzca la nota del alumno: ");
+            calificacion = 4;
+            //IntroducirDatosNota
+            c.setNotaActual(new Nota());
+            c.getNotaActual().setCalificacion(calificacion);
+            c.getNotaActual().setPrueba(c.getPruebaActual());
+            c.getAlumnoActual().addNota(c.getNotaActual());
+
+            Alumno aux = c.getAsignatura().getAlumno(c.getAlumnoActual().getDni());
+            assertTrue(aux.getNota(c.getAsignatura().getPrueba(0)).getCalificacion() == 4);
+        }
     }
 
     /**
@@ -141,11 +167,12 @@ public class PantallaTest {
      */
     @Test
     public void testConsultaAlumno() {
+
         System.out.println("ConsultaAlumno");
-        Pantalla instance = new Pantalla();
-        instance.ConsultaAlumno();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Controladora c = new Controladora();
+
+        c.consultaAlumno();
+        String s = c.seleccionarAlumno("123");
     }
 
     /**
