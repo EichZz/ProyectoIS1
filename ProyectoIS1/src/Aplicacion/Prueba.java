@@ -69,7 +69,7 @@ public class Prueba {
         return "Prueba: " + nombre + ".\n" +
                 "ID de la prueba: " + id_Prueba + ".\n" +
                 "Descripcion: " + descripcion + ".\n" +
-                "Porcentaje: " + porcentaje + "% .\n" +
+                "Porcentaje: " + porcentaje + "%.\n" +
                 "Tipo: " + tipo_de_prueba + ".\n";
     }
     

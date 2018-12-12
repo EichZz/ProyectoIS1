@@ -179,11 +179,12 @@ public class Pantalla {
         Scanner s = new Scanner(System.in);
         int opcion = -1;
         do {
-            System.out.print("Menú Principal:\n"
+            System.out.print("\nMenú Principal:\n"
                     + "\t1. Añadir Pruebas Evaluables.\n"
                     + "\t2. Consulta Pruebas Evaluables.\n"
                     + "\t3. Gestionar Datos.\n"
-                    + "\t0. Salir.\n");
+                    + "\t0. Salir.\n"
+                    + "Introduzca una opción: ");
             opcion = s.nextInt();
             while (opcion > 3 || opcion < 0) {
                 System.out.println("Introduzca una opcion valida:\n");
@@ -210,13 +211,14 @@ public class Pantalla {
         Scanner s = new Scanner(System.in);
         int opcion = -1;
         do {
-            System.out.print("Menú Gestión de Datos:\n"
+            System.out.print("\nMenú Gestión de Datos:\n"
                     + "\t1. Añadir Datos Alumnos.\n"
                     + "\t2. Consulta Alumno.\n"
                     + "\t3. Crear Grupos Trabajo.\n"
                     + "\t4. Consulta Grupo.\n"
                     + "\t5. Introducir Notas.\n"
-                    + "\t0. Volver.\n");
+                    + "\t0. Volver.\n"
+                    + "Introduzca una opción: ");
             opcion = s.nextInt();
             while (opcion > 5 || opcion < 0) {
                 System.out.print("Introduzca una opcion valida:\n");
@@ -247,11 +249,12 @@ public class Pantalla {
         Scanner s = new Scanner(System.in);
         int opcion = -1;
         do {
-            System.out.print("Menú Introducir Notas:\n"
+            System.out.print("\nMenú Introducir Notas:\n"
                     + "\t1. Introducir Nota Alumno.\n"
                     + "\t2. Introducir Nota Clase.\n"
                     + "\t3. Introducir Nota Grupo.\n"
-                    + "\t0. Volver.\n");
+                    + "\t0. Volver.\n"
+                    + "Introduzca una opción: ");
             opcion = s.nextInt();
             while (opcion > 3 || opcion < 0) {
                 System.out.print("Introduzca una opcion valida:\n");

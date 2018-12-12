@@ -1,10 +1,8 @@
-
 package Aplicacion;
 
 import java.util.*;
 
-
-public class Alumno {
+public class Alumno implements Comparable {
 
     private String nombre;
     private String apellidos;
@@ -12,7 +10,16 @@ public class Alumno {
     private int grupo_de_EPD;
     private List<Nota> listaNotas;
 
-    public Alumno() {}
+    public Alumno() {
+    }
+
+    public Alumno(String nombre, String apellidos, String dni, int grupo_de_EPD) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.dni = dni;
+        this.grupo_de_EPD = grupo_de_EPD;
+        listaNotas = new ArrayList<>();
+    }
 
     public String getNombre() {
         return nombre;
@@ -33,7 +40,7 @@ public class Alumno {
     public String getDni() {
         return dni;
     }
-    
+
     public void setDni(String dni) {
         this.dni = dni;
     }
@@ -53,31 +60,44 @@ public class Alumno {
     public Iterator getNotas() {
         return listaNotas.iterator();
     }
-    
 
     @Override
     public String toString() {
-        return "Alumno: " + "Nombre: " + nombre + " " + apellidos
-                + ".\nDNI: " + dni + 
-                " Grupo de EPD: " + grupo_de_EPD + ".\n";
+        return "Nombre: " + nombre + " " + apellidos
+                + "\nDNI: " + dni
+                + "\nGrupo de EPD: " + grupo_de_EPD + ".\n";
     }
 
     public boolean addNota(Nota n) {
         boolean add = listaNotas.add(n);
         return add;
     }
-    
-    public Nota getNota(Prueba p){
+
+    public Nota getNota(Prueba p) {
         Iterator<Nota> it = listaNotas.listIterator();
         boolean enc = false;
         Nota n = null;
-        while(it.hasNext() && !enc){
+        while (it.hasNext() && !enc) {
             Nota aux = it.next();
-            if(p == aux.getPrueba()){
+            if (p == aux.getPrueba()) {
                 enc = true;
                 n = aux;
             }
         }
-        return n; 
+        return n;
     }
+
+    @Override
+    public int compareTo(Object t) {
+        Alumno a = (Alumno) t;
+        int res = this.apellidos.compareTo(a.apellidos);
+        if (res == 0) {
+            res = this.nombre.compareTo(a.nombre);
+        }
+        if (res == 0) {
+            res = this.dni.compareTo(a.dni);
+        }
+        return res;
+    }
+    
 }
