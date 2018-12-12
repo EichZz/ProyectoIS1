@@ -7,6 +7,7 @@ package Vista;
 
 import Aplicacion.Alumno;
 import Aplicacion.Controladora;
+import Aplicacion.Grupo;
 import Aplicacion.Nota;
 import Aplicacion.Prueba;
 import java.util.Iterator;
@@ -101,10 +102,22 @@ public class PantallaTest {
     @Test
     public void testIntroducirNotaAlumno() {
         System.out.println("IntroducirNotaAlumno");
-        Pantalla instance = new Pantalla();
-        instance.IntroducirNotaAlumno();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Controladora c = new Controladora();
+        
+        c.setPruebaActual(new Prueba());
+        c.setNotaActual(new Nota());
+        c.setAlumnoActual(new Alumno());
+        
+        int id = 1;
+        String dni = "111111";
+        double calif = 7.8;
+        
+        c.getPruebaActual().setId_Prueba(id);
+        c.getAlumnoActual().setDni(dni);
+        c.getNotaActual().setCalificacion(calif);
+        
+        
+        assertTrue(c.getPruebaActual().getId_Prueba() == id && c.getAlumnoActual().getDni().equals(dni) && c.getNotaActual().getCalificacion() == calif);
     }
 
     /**
@@ -144,10 +157,26 @@ public class PantallaTest {
     @Test
     public void testCrearGruposTrabajo() {
         System.out.println("CrearGruposTrabajo");
-        Pantalla instance = new Pantalla();
-        instance.CrearGruposTrabajo();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Controladora c = new Controladora();
+        
+        c.setGrupoActual(new Grupo());
+        
+        int id = 4;
+        int n = 1;
+        
+        c.getGrupoActual().setId_Grupo(id);
+        c.getGrupoActual().setNumero(n);
+        
+        //Introduzco alumnos
+        for(int i = 0; i < n; i++){
+            c.setAlumnoActual(new Alumno());
+            String dni1 = "11111";
+            c.getAlumnoActual().setDni(dni1);
+            c.getAlumnoActual().equals(c.getAsignatura().getAlumno(dni1));
+            c.getGrupoActual().addAlumno(c.getAlumnoActual());
+        }
+        
+        assertTrue(c.getAsignatura().addGrupo(c.getGrupoActual()));
     }
 
     /**
@@ -181,10 +210,8 @@ public class PantallaTest {
     @Test
     public void testConsultaGrupo() {
         System.out.println("ConsultaGrupo");
-        Pantalla instance = new Pantalla();
-        instance.ConsultaGrupo();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Controladora c = new Controladora();
+        c.consultaGrupo();
     }
 
 }
