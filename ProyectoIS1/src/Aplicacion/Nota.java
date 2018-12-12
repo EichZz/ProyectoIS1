@@ -13,6 +13,10 @@ public class Nota {
         this.calificacion = calificacion;
     }
 
+    public double getCalificacion() {
+        return calificacion;
+    }
+
     public void setPrueba(Prueba prueba) {
         this.prueba = prueba;
     }
