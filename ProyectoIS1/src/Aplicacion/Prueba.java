@@ -31,6 +31,18 @@ public class Prueba {
     public String getNombre() {
         return nombre;
     }    
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public Double getPorcentaje() {
+        return porcentaje;
+    }
+
+    public String getTipo_de_prueba() {
+        return tipo_de_prueba;
+    }
     
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -38,10 +50,6 @@ public class Prueba {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public Double getPorcentaje() {
-        return porcentaje;
     }
 
     public void setPorcentaje(Double porcentaje) {

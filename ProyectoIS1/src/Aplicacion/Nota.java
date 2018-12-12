@@ -13,13 +13,14 @@ public class Nota {
         this.calificacion = calificacion;
     }
 
-    public void setPrueba(Prueba prueba) {
-        this.prueba = prueba;
-    }
-
     public double getCalificacion() {
         return calificacion;
     }
+
+    public void setPrueba(Prueba prueba) {
+        this.prueba = prueba;
+    }
+    
 
     public void setCalificacion(double nota) {
         this.calificacion = nota;

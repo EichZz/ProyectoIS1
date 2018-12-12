@@ -13,9 +13,7 @@ public class Pantalla {
         controladora = new Controladora();
     }
 
-    
-    
-    private void AñadirPruebasEvaluables() {
+    public void AñadirPruebasEvaluables() {
         controladora.añadirPrueba();
 
         Scanner s = new Scanner(System.in);
@@ -45,11 +43,11 @@ public class Pantalla {
         }
     }
 
-    private void ConsultaPruebasEvaluables() {
+    public void ConsultaPruebasEvaluables() {
         System.out.println(controladora.consultaPruebas());
     }
 
-    private void AñadirDatosAlumnos() {
+    public void AñadirDatosAlumnos() {
         controladora.añadirAlumno();
 
         Scanner s = new Scanner(System.in);
@@ -77,7 +75,7 @@ public class Pantalla {
         }
     }
 
-    private void IntroducirNotaAlumno() {
+    public void IntroducirNotaAlumno() {
         controladora.añadirNotaAlumno();
 
         Scanner s = new Scanner(System.in);
@@ -103,7 +101,7 @@ public class Pantalla {
         }
     }
 
-    private void IntroducirNotaClase() {
+    public void IntroducirNotaClase() {
         controladora.añadirNotaClase();
 
         Scanner s = new Scanner(System.in);
@@ -122,7 +120,7 @@ public class Pantalla {
         }
     }
 
-    private void CrearGruposTrabajo() {
+    public void CrearGruposTrabajo() {
         controladora.crearGrupoTrabajo();
 
         Scanner s = new Scanner(System.in);
@@ -152,7 +150,7 @@ public class Pantalla {
         }
     }
 
-    private void IntroducirNotaGrupo() {
+    public void IntroducirNotaGrupo() {
         controladora.añadirNotaGrupo();
 
         Scanner s = new Scanner(System.in);
@@ -166,14 +164,14 @@ public class Pantalla {
         controladora.introducirNotaGrupo(idp, calificacion);
     }
 
-    private void ConsultaAlumno() {
+    public void ConsultaAlumno() {
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el DNI del alumno: ");
         String dni = s.next();
         System.out.println(controladora.seleccionarAlumno(dni));
     }
 
-    private void ConsultaGrupo() {
+    public void ConsultaGrupo() {
         System.out.println(controladora.consultaGrupo());
     }
 
@@ -208,7 +206,7 @@ public class Pantalla {
         } while (opcion != 0);
     }
 
-    private void MenuDatos() {
+    public void MenuDatos() {
         Scanner s = new Scanner(System.in);
         int opcion = -1;
         do {
@@ -245,7 +243,7 @@ public class Pantalla {
         } while (opcion != 0);
     }
 
-    private void MenuNotas() {
+    public void MenuNotas() {
         Scanner s = new Scanner(System.in);
         int opcion = -1;
         do {

@@ -38,6 +38,10 @@ public class Alumno {
         this.dni = dni;
     }
 
+    public int getGrupo_de_EPD() {
+        return grupo_de_EPD;
+    }
+
     public void setGrupo_de_EPD(int grupo_de_EPD) {
         this.grupo_de_EPD = grupo_de_EPD;
     }
