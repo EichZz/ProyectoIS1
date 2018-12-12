@@ -162,7 +162,7 @@ public class PantallaTest {
         c.setGrupoActual(new Grupo());
         
         int id = 4;
-        int n = 1;
+        int n = 3;
         
         c.getGrupoActual().setId_Grupo(id);
         c.getGrupoActual().setNumero(n);
@@ -173,6 +173,14 @@ public class PantallaTest {
             String dni1 = "11111";
             c.getAlumnoActual().setDni(dni1);
             c.getAlumnoActual().equals(c.getAsignatura().getAlumno(dni1));
+            c.getGrupoActual().addAlumno(c.getAlumnoActual());
+            String dni2 = "22222";
+            c.getAlumnoActual().setDni(dni2);
+            c.getAlumnoActual().equals(c.getAsignatura().getAlumno(dni2));
+            c.getGrupoActual().addAlumno(c.getAlumnoActual());
+            String dni3 = "33333";
+            c.getAlumnoActual().setDni(dni3);
+            c.getAlumnoActual().equals(c.getAsignatura().getAlumno(dni3));
             c.getGrupoActual().addAlumno(c.getAlumnoActual());
         }
         
