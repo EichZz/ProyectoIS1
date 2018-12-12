@@ -176,7 +176,8 @@ public class PantallaTest {
             c.getGrupoActual().addAlumno(c.getAlumnoActual());
         }
         
-        assertTrue(c.getAsignatura().addGrupo(c.getGrupoActual()));
+        Grupo g = c.getAsignatura().getGrupo(id);
+        assertTrue(c.getGrupoActual().equals(g));
     }
 
     /**
@@ -211,7 +212,7 @@ public class PantallaTest {
     public void testConsultaGrupo() {
         System.out.println("ConsultaGrupo");
         Controladora c = new Controladora();
-        c.consultaGrupo();
+        String s = c.consultaGrupo();
     }
 
 }
