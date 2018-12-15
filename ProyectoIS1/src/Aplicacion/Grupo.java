@@ -52,4 +52,24 @@ public class Grupo {
         }
         return s;
     }
+    
+     public Alumno getAlumno(String dni) {
+        Iterator<Alumno> it = listaAlumnosGrupo.listIterator();
+        boolean enc = false;
+        Alumno a = null;
+        while (it.hasNext() && !enc) {
+            Alumno aux = it.next();
+            if (dni.equals(aux.getDni())) {
+                enc = true;
+                a = aux;
+            }
+        }
+        return a;
+     }
+     
+    @Override
+    public boolean equals(Object obj){
+        Grupo g = (Grupo) obj;
+        return (this.id_Grupo == g.id_Grupo);
+    }
 }

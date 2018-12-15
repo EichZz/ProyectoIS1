@@ -12,9 +12,48 @@ public class Asignatura {
     public Asignatura(String nombre) {
 
         this.nombre = nombre;
-        ListaAlumnos = new ArrayList<>();
+        ListaAlumnos = new ArrayList<>();        
         ListaGrupos = new ArrayList<>();
         ListaPruebas = new ArrayList<>();
+        //Inicializar la asignatura para poder hacer uso de la aplicación
+        Prueba epd1 = new Prueba(1, "EPD Eval 1", "Primer parcial", 20.0, "Evaluacion continua");
+        Prueba epd2 = new Prueba(2, "EPD Eval 2", "Segundo parcial", 30.0, "Evaluacion continua");
+        Prueba conv = new Prueba(3, "Convocatoria", "Examen de enero", 50.0, "Evaluacion final");
+        ListaPruebas.add(epd1);
+        ListaPruebas.add(epd2);
+        ListaPruebas.add(conv);
+        Alumno a1 = new Alumno("Ana", "Perez Gomez", "34895017F", 1);
+        Nota n11 = new Nota(epd1, 10);
+        Nota n12 = new Nota(epd2, 10);
+        Nota n1c = new Nota(conv, 10);
+        a1.addNota(n11);
+        a1.addNota(n12);
+        a1.addNota(n1c);
+        Alumno a2 = new Alumno("Paco", "Gonzalez Burgos", "60139345Y", 1);
+        Nota n21 = new Nota(epd1, 7.5);
+        Nota n22 = new Nota(epd2, 5);
+        Nota n2c = new Nota(conv, 3);
+        a2.addNota(n21);
+        a2.addNota(n22);
+        a2.addNota(n2c);
+        Alumno a3 = new Alumno("Maria", "Fernandez Carmona", "73904457S", 2);
+        Nota n31 = new Nota(epd1, 9);
+        Nota n32 = new Nota(epd2, 8.5);
+        Nota n3c = new Nota(conv, 6.75);
+        a3.addNota(n31);
+        a3.addNota(n32);
+        a3.addNota(n3c);
+        ListaAlumnos.add(a1);
+        ListaAlumnos.add(a2);
+        ListaAlumnos.add(a3);
+        ListaAlumnos.sort(new ComparadorAlumno());
+        Grupo g = new Grupo();
+        g.setId_Grupo(1);
+        g.setNumero(3);
+        g.addAlumno(a1);
+        g.addAlumno(a2);
+        g.addAlumno(a2);
+        ListaGrupos.add(g);
     }
 
     public boolean addPrueba(Prueba p) {
@@ -80,4 +119,10 @@ public class Asignatura {
         }
         return g;
     }
+
+    public List<Alumno> getListaAlumnos() {
+        return ListaAlumnos;
+    }
+    
+    
 }

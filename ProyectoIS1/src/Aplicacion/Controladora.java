@@ -12,8 +12,8 @@ public class Controladora {
 
     public Controladora() {
         asignatura = new Asignatura("Asignatura");
-    }    
-    
+    }
+
     public void añadirPrueba() {
         pruebaActual = new Prueba();
     }
@@ -36,10 +36,11 @@ public class Controladora {
 
     public String consultaPruebas() {
         Iterator<Prueba> it = asignatura.getPruebas();
-        String s = "";
+        String s = "\nPruebas de la asignatura:\n";
         while (it.hasNext()) {
             Prueba aux = it.next();
-            s += aux.toString() + "\n";
+            s += aux.toString(); 
+                    //+ "\n";
         }
         return s;
     }
@@ -61,6 +62,7 @@ public class Controladora {
 
     public void confirmarAlumno() {
         asignatura.addAlumno(alumnoActual);
+        asignatura.getListaAlumnos().sort(new ComparadorAlumno());
     }
 
     public void añadirNotaAlumno() {
@@ -87,7 +89,7 @@ public class Controladora {
     public void añadirNotaClase() {
     }
 
-    public void seleccionarPrueba(int id_prueba) {        
+    public void seleccionarPrueba(int id_prueba) {
         pruebaActual = asignatura.getPrueba(id_prueba);
     }
 
@@ -97,7 +99,7 @@ public class Controladora {
         notaActual.setPrueba(pruebaActual);
         alumnoActual.addNota(notaActual);
     }
-   
+
     public void crearGrupoTrabajo() {
         grupoActual = new Grupo();
     }
@@ -143,37 +145,54 @@ public class Controladora {
 
     public String seleccionarAlumno(String dni) {
         alumnoActual = asignatura.getAlumno(dni);
-        String s = alumnoActual.mostrarAlumno();
-         
-        Iterator<Nota> it= alumnoActual.getNotas();
-        while(it.hasNext()){
+        String s = alumnoActual.mostrarAlumno() + "\nPruebas y calificaciones:\n\n";
+
+        Iterator<Nota> it = alumnoActual.getNotas();
+        double total = 0;
+        while (it.hasNext()) {
             notaActual = it.next();
-            s+= notaActual.mostrarNota() + "\n";
+            s += notaActual.mostrarNota() + "\n\n";
+            total += notaActual.getCalificacion() * (notaActual.getPrueba().getPorcentaje() / 100);
         }
-        return s;
+        return s += "Nota completa: " + total + "\n";
     }
 //cambiar consulta grupo
+
     public String consultaGrupo() {
 
         Iterator<Prueba> it = asignatura.getPruebas();
 
-        String s = "Pruebas:\t\t\t";
+        String s = "\t\t\t\t\t";
 
         while (it.hasNext()) {
             Prueba p = it.next();
-            s+= p.getNombre() + "\t";            
+            s += p.getNombre() + "\t";
         }
-        
-        s+="Nota Final";
-        
+
+        s += "Nota Final";
+
         Iterator<Alumno> it2 = asignatura.getAlumnos();
-            while (it2.hasNext()) {
-                Alumno a = it2.next();
-                
+        while (it2.hasNext()) {
+            String aux = "";
+            Alumno a = it2.next();
+            aux += a.getApellidos() + " " + a.getNombre();
+            for (int i = 40 - aux.length(); i > 0; i--) {
+                aux += " ";
             }
+            s += "\n" + aux;
+            Iterator<Nota> it3 = a.getNotas();
+            double total = 0;
+            while (it3.hasNext()) {
+                Nota n = it3.next();
+                s += n.getCalificacion() + "\t\t";
+                total += n.getCalificacion() * (n.getPrueba().getPorcentaje() / 100);
+            }
+            s += total;
+        }
         return s;
     }
 //fin
+
     public Grupo getGrupoActual() {
         return grupoActual;
     }
@@ -213,6 +232,5 @@ public class Controladora {
     public void setPruebaActual(Prueba pruebaActual) {
         this.pruebaActual = pruebaActual;
     }
-    
-    
+
 }

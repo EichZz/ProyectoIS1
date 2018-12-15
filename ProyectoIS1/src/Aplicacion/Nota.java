@@ -20,6 +20,7 @@ public class Nota {
     public void setPrueba(Prueba prueba) {
         this.prueba = prueba;
     }
+    
 
     public void setCalificacion(double nota) {
         this.calificacion = nota;

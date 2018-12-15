@@ -74,7 +74,8 @@ public class PantallaTest {
         c.confirmarPrueba();
 
         String s = c.consultaPruebas();
-        assertTrue(s.equals(c.getAsignatura().getPrueba(0).toString() + "\n"));
+        String aux = "\nPruebas de la asignatura:\n" + c.getAsignatura().getPruebas().toString();
+        assertTrue(s.equals(aux));
 
     }
 
@@ -91,8 +92,8 @@ public class PantallaTest {
                 && c.getAlumnoActual().getApellidos().equals("Gracia")
                 && c.getAlumnoActual().getDni().equals("111111111")
                 && c.getAlumnoActual().getGrupo_de_EPD() == 1);
-        
-        c.añadirAlumno();
+
+        c.confirmarAlumno();
         assertTrue(c.getAlumnoActual().equals(c.getAsignatura().getAlumno("111111111")));
     }
 
@@ -103,20 +104,19 @@ public class PantallaTest {
     public void testIntroducirNotaAlumno() {
         System.out.println("IntroducirNotaAlumno");
         Controladora c = new Controladora();
-        
+
         c.setPruebaActual(new Prueba());
         c.setNotaActual(new Nota());
         c.setAlumnoActual(new Alumno());
-        
+
         int id = 1;
         String dni = "111111";
         double calif = 7.8;
-        
+
         c.getPruebaActual().setId_Prueba(id);
         c.getAlumnoActual().setDni(dni);
         c.getNotaActual().setCalificacion(calif);
-        
-        
+
         assertTrue(c.getPruebaActual().getId_Prueba() == id && c.getAlumnoActual().getDni().equals(dni) && c.getNotaActual().getCalificacion() == calif);
     }
 
@@ -158,34 +158,36 @@ public class PantallaTest {
     public void testCrearGruposTrabajo() {
         System.out.println("CrearGruposTrabajo");
         Controladora c = new Controladora();
-        
+
         c.setGrupoActual(new Grupo());
-        
+
         int id = 4;
         int n = 3;
-        
+
         c.getGrupoActual().setId_Grupo(id);
         c.getGrupoActual().setNumero(n);
-        
+
         //Introduzco alumnos
-        for(int i = 0; i < n; i++){
-            c.setAlumnoActual(new Alumno());
-            String dni1 = "11111";
-            c.getAlumnoActual().setDni(dni1);
-            c.getAlumnoActual().equals(c.getAsignatura().getAlumno(dni1));
-            c.getGrupoActual().addAlumno(c.getAlumnoActual());
-            String dni2 = "22222";
-            c.getAlumnoActual().setDni(dni2);
-            c.getAlumnoActual().equals(c.getAsignatura().getAlumno(dni2));
-            c.getGrupoActual().addAlumno(c.getAlumnoActual());
-            String dni3 = "33333";
-            c.getAlumnoActual().setDni(dni3);
-            c.getAlumnoActual().equals(c.getAsignatura().getAlumno(dni3));
-            c.getGrupoActual().addAlumno(c.getAlumnoActual());
-        }
-        
-        Grupo g = c.getAsignatura().getGrupo(id);
-        assertTrue(c.getGrupoActual().equals(g));
+        c.setAlumnoActual(new Alumno());
+        String dni1 = "11111";
+        c.getAlumnoActual().setDni(dni1);
+        c.getGrupoActual().addAlumno(c.getAlumnoActual());
+        assertTrue(c.getAlumnoActual().equals(c.getGrupoActual().getAlumno(dni1)));
+
+        c.setAlumnoActual(new Alumno());
+        String dni2 = "22222";
+        c.getAlumnoActual().setDni(dni2);
+        c.getGrupoActual().addAlumno(c.getAlumnoActual());
+        assertTrue(c.getAlumnoActual().equals(c.getGrupoActual().getAlumno(dni2)));
+
+        c.setAlumnoActual(new Alumno());
+        String dni3 = "33333";
+        c.getAlumnoActual().setDni(dni3);
+        c.getGrupoActual().addAlumno(c.getAlumnoActual());
+        assertTrue(c.getAlumnoActual().equals(c.getGrupoActual().getAlumno(dni3)));
+
+        c.confirmarGrupo();
+        assertTrue(c.getGrupoActual().equals(c.getAsignatura().getGrupo(id)));
     }
 
     /**
@@ -194,10 +196,9 @@ public class PantallaTest {
     @Test
     public void testIntroducirNotaGrupo() {
         System.out.println("IntroducirNotaGrupo");
-        Pantalla instance = new Pantalla();
-        instance.IntroducirNotaGrupo();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Controladora c = new Controladora();
+        c.introducirNotaGrupo(0, 10.0);
+
     }
 
     /**
@@ -208,19 +209,41 @@ public class PantallaTest {
 
         System.out.println("ConsultaAlumno");
         Controladora c = new Controladora();
+        c.setPruebaActual(new Prueba());
+        c.setNotaActual(new Nota());
+        c.setAlumnoActual(new Alumno());
 
-        c.consultaAlumno();
-        String s = c.seleccionarAlumno("123");
+        int id = 1;
+        String dni = "111111";
+        double calif = 7.8;
+
+        c.getPruebaActual().setId_Prueba(id);
+        c.getAlumnoActual().setDni(dni);
+        c.getNotaActual().setCalificacion(calif);
+        
+        String aux = c.seleccionarAlumno("111111111");
+        String s = c.getAlumnoActual().mostrarAlumno() + "\nPruebas y calificaciones:\n\n";
+        Iterator<Nota> it = c.getAlumnoActual().getNotas();
+        double total = 0;
+        while (it.hasNext()) {
+            c.setNotaActual(it.next());
+            s += c.getNotaActual().mostrarNota() + "\n\n";
+            total += c.getNotaActual().getCalificacion() * (c.getNotaActual().getPrueba().getPorcentaje() / 100);
+            s += "Nota completa: " + total + "\n";
+            assertTrue(s.equals(aux));
+        }
     }
 
-    /**
-     * Test of ConsultaGrupo method, of class Pantalla.
-     */
-    @Test
-    public void testConsultaGrupo() {
+        /**
+         * Test of ConsultaGrupo method, of class Pantalla.
+         */
+        @Test
+        public void testConsultaGrupo
+        
+            () {
         System.out.println("ConsultaGrupo");
-        Controladora c = new Controladora();
-        String s = c.consultaGrupo();
-    }
+            Controladora c = new Controladora();
+            String s = c.consultaGrupo();
+        }
 
-}
+    }
