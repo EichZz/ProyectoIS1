@@ -80,4 +80,12 @@ public class Alumno {
         }
         return n; 
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Alumno a = (Alumno) obj;
+        return this.dni.equals(a.dni); 
+    }
+    
+    
 }
