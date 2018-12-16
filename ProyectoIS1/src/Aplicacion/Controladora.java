@@ -39,8 +39,7 @@ public class Controladora {
         String s = "\nPruebas de la asignatura:\n";
         while (it.hasNext()) {
             Prueba aux = it.next();
-            s += aux.toString(); 
-                    //+ "\n";
+            s += aux.toString() + "\n";
         }
         return s;
     }

@@ -73,10 +73,14 @@ public class PantallaTest {
         c.introducirDatosPrueba(0, "EPD1", "PrimeraEPD", 30, "EPD");
         c.confirmarPrueba();
 
-        String s = c.consultaPruebas();
-        String aux = "\nPruebas de la asignatura:\n" + c.getAsignatura().getPruebas().toString();
+        String aux = c.consultaPruebas();
+        String s = "\nPruebas de la asignatura:\n";
+        Iterator<Prueba> it = c.getAsignatura().getPruebas();
+        while (it.hasNext()) {
+            Prueba p = it.next();
+            s += p.toString() + "\n";
+        }
         assertTrue(s.equals(aux));
-
     }
 
     /**
@@ -104,17 +108,17 @@ public class PantallaTest {
     public void testIntroducirNotaAlumno() {
         System.out.println("IntroducirNotaAlumno");
         Controladora c = new Controladora();
-        
+
         c.añadirPrueba();
         c.introducirDatosPrueba(4, "EPD1", "PrimeraEPD", 30, "EPD");
         c.confirmarPrueba();
-        
+
         c.añadirAlumno();
         c.introducirDatosAlumnos("Pepe", "Gracia", "111111111", 1);
         c.confirmarAlumno();
-        
+
         c.añadirNotaAlumno();
-        c.introducirDatosNota(4,"111111111", 7.5);
+        c.introducirDatosNota(4, "111111111", 7.5);
         c.confirmarNotaAlumno();
         assertTrue(c.getAsignatura().getAlumno("111111111").getNota(c.getAsignatura().getPrueba(4)).getCalificacion() == 7.5);
     }
@@ -219,7 +223,7 @@ public class PantallaTest {
         c.getPruebaActual().setId_Prueba(id);
         c.getAlumnoActual().setDni(dni);
         c.getNotaActual().setCalificacion(calif);
-        
+
         String aux = c.seleccionarAlumno("111111111");
         String s = c.getAlumnoActual().mostrarAlumno() + "\nPruebas y calificaciones:\n\n";
         Iterator<Nota> it = c.getAlumnoActual().getNotas();
@@ -233,16 +237,14 @@ public class PantallaTest {
         }
     }
 
-        /**
-         * Test of ConsultaGrupo method, of class Pantalla.
-         */
-        @Test
-        public void testConsultaGrupo
-        
-            () {
+    /**
+     * Test of ConsultaGrupo method, of class Pantalla.
+     */
+    @Test
+    public void testConsultaGrupo() {
         System.out.println("ConsultaGrupo");
-            Controladora c = new Controladora();
-            String s = c.consultaGrupo();
-        }
-
+        Controladora c = new Controladora();
+        String s = c.consultaGrupo();
     }
+
+}
