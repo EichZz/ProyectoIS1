@@ -232,5 +232,4 @@ public class Controladora {
     public void setPruebaActual(Prueba pruebaActual) {
         this.pruebaActual = pruebaActual;
     }
-
 }
