@@ -13,8 +13,8 @@ public class Controladora {
     public Controladora() {
         asignatura = new Asignatura("Asignatura");
     }
-    
-    public Controladora(String test){
+
+    public Controladora(String test) {
         asignatura = new Asignatura();
     }
 
@@ -38,16 +38,23 @@ public class Controladora {
         asignatura.addPrueba(pruebaActual);
     }
 //CU02-Consultar Prueba
+
     public String consultaPruebas() {
         Iterator<Prueba> it = asignatura.getPruebas();
+
         String s = "\nPruebas de la asignatura:\n";
         while (it.hasNext()) {
             Prueba aux = it.next();
             s += aux.toString() + "\n";
         }
-        return s;
+        if (s.equals("\nPruebas de la asignatura:\n")) { //Flujo Alternativo 1
+            return "No existen pruebas\n";
+        } else {
+            return s;
+        }
     }
 //CU03-Añadir Alumno
+
     public void añadirAlumno() {
         alumnoActual = new Alumno();
     }
@@ -68,6 +75,7 @@ public class Controladora {
         asignatura.getListaAlumnos().sort(new ComparadorAlumno());
     }
 //CU04-Añadir Nota Alumno
+
     public void añadirNotaAlumno() {
 
         notaActual = new Nota();
@@ -89,6 +97,7 @@ public class Controladora {
         alumnoActual.addNota(notaActual);
     }
 //CU05-Añadir Nota Clase
+
     public void añadirNotaClase() {
     }
 
@@ -103,6 +112,7 @@ public class Controladora {
         alumnoActual.addNota(notaActual);
     }
 //CU06-Crear Grupo
+
     public void crearGrupoTrabajo() {
         grupoActual = new Grupo();
     }
@@ -125,6 +135,7 @@ public class Controladora {
         asignatura.addGrupo(grupoActual);
     }
 //CU07-Añadir Nota Grupo
+
     public void añadirNotaGrupo() {
     }
 
@@ -143,11 +154,20 @@ public class Controladora {
         }
     }
 //CU08-Consulta Alumno
+
     public void consultaAlumno() {
     }
 
     public String seleccionarAlumno(String dni) {
         alumnoActual = asignatura.getAlumno(dni);
+        
+        while (alumnoActual == null) { //Flujo Alternativo 1
+            System.out.println("DNI Incorrecto. Introduzca un DNI válido: ");
+            Scanner s = new Scanner(System.in);
+            dni = s.next();
+            alumnoActual = asignatura.getAlumno(dni);
+        }
+            
         String s = alumnoActual.mostrarAlumno() + "\nPruebas y calificaciones:\n\n";
 
         Iterator<Nota> it = alumnoActual.getNotas();
@@ -173,7 +193,7 @@ public class Controladora {
         }
 
         s += "Nota Final";
-
+        String auxfa = new String(s);
         Iterator<Alumno> it2 = asignatura.getAlumnos();
         while (it2.hasNext()) {
             String aux = "";
@@ -192,7 +212,11 @@ public class Controladora {
             }
             s += total;
         }
-        return s;
+        if (s.equals(auxfa)) { //Flujo Alternativo 1
+            return "No existen alumnos\n";
+        } else {
+            return s;
+        }
     }
 //fin
 

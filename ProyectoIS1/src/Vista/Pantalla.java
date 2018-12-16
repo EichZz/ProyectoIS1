@@ -39,12 +39,12 @@ public class Pantalla {
             controladora.confirmarPrueba();
             System.out.println("La prueba se añadió con éxito");
         } else {
-            System.out.println("Operación cancelada");
+            System.out.println("Operación cancelada"); //Flujo Alternativo 1
         }
     }
 
     public void ConsultaPruebasEvaluables() {//CU02
-        System.out.println(controladora.consultaPruebas());
+        System.out.println(controladora.consultaPruebas()); //Flujo alternativo dentro del método
     }
 
     public void AñadirDatosAlumnos() {//CU03
@@ -71,7 +71,7 @@ public class Pantalla {
             controladora.confirmarAlumno();
             System.out.println("El alumno se añadió con éxito");
         } else {
-            System.out.println("Operación cancelada");
+            System.out.println("Operación cancelada"); //Flujo Alternativo 1
         }
     }
 
@@ -88,6 +88,12 @@ public class Pantalla {
 
         controladora.introducirDatosNota(id, dni, calif);
 
+        while (controladora.getAlumnoActual() == null) { //Flujo Alternativo 2
+            System.out.println("DNI Incorrecto. Introduzca un DNI válido: ");
+            dni = s.next();
+            controladora.introducirDatosNota(id, dni, calif);
+        }
+
         System.out.println(controladora.mostrarNota()
                 + "\n¿Desea confirmar la nota del alumno?"
                 + "\n\t1. Sí"
@@ -97,7 +103,7 @@ public class Pantalla {
             controladora.confirmarNotaAlumno();
             System.out.println("La nota se añadió al alumno con éxito");
         } else {
-            System.out.println("Operación cancelada");
+            System.out.println("Operación cancelada"); //Flujo Alternativo 1
         }
     }
 
@@ -146,7 +152,7 @@ public class Pantalla {
             controladora.confirmarGrupo();
             System.out.println("El grupo se añadió con éxito");
         } else {
-            System.out.println("Operación cancelada");
+            System.out.println("Operación cancelada"); //Flujo Alternativo 1
         }
     }
 
@@ -156,7 +162,14 @@ public class Pantalla {
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el ID del grupo: ");
         int idg = s.nextInt();
+
         controladora.seleccionarGrupo(idg);
+        while (controladora.getGrupoActual() == null) { //Flujo Alternativo 1
+            System.out.println("Grupo inexistente. Introduzca un ID de grupo válido: ");
+            idg = s.nextInt();
+            controladora.seleccionarGrupo(idg);
+        }
+
         System.out.println("Introduzca el ID de la prueba: ");
         int idp = s.nextInt();
         System.out.println("Introduzca la nota del alumno: ");
@@ -168,7 +181,7 @@ public class Pantalla {
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el DNI del alumno: ");
         String dni = s.next();
-        System.out.println(controladora.seleccionarAlumno(dni));
+        System.out.println(controladora.seleccionarAlumno(dni)); // Flujo Alternativo dentro del método.
     }
 
     public void ConsultaGrupo() {//CU09
