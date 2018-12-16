@@ -74,7 +74,7 @@ public class PantallaTest {
         c.confirmarPrueba();
 
         String s = c.consultaPruebas();
-        String aux = "\nPruebas de la asignatura:\n" + c.getAsignatura().getPruebas().toString();
+        String aux = "\nPruebas de la asignatura:\n" + c.getAsignatura().getPrueba(0).toString();
         assertTrue(s.equals(aux));
 
     }
