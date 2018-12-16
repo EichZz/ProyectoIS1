@@ -116,7 +116,6 @@ public class PantallaTest {
         c.añadirNotaAlumno();
         c.introducirDatosNota(4,"111111111", 7.5);
         c.confirmarNotaAlumno();
-        
         assertTrue(c.getAsignatura().getAlumno("111111111").getNota(c.getAsignatura().getPrueba(4)).getCalificacion() == 7.5);
     }
 
