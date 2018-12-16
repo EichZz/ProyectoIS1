@@ -68,7 +68,7 @@ public class PantallaTest {
      */
     @Test
     public void testConsultaPruebasEvaluables() {
-        Controladora c = new Controladora();
+        Controladora c = new Controladora("test");
         c.añadirPrueba();
         c.introducirDatosPrueba(0, "EPD1", "PrimeraEPD", 30, "EPD");
         c.confirmarPrueba();
@@ -198,10 +198,47 @@ public class PantallaTest {
      */
     @Test
     public void testIntroducirNotaGrupo() {
-        System.out.println("IntroducirNotaGrupo");
-        Controladora c = new Controladora();
-        c.introducirNotaGrupo(0, 10.0);
+        Controladora c = new Controladora("test");
 
+        c.setGrupoActual(new Grupo());
+
+        int id = 4;
+        int n = 3;
+
+        c.getGrupoActual().setId_Grupo(id);
+        c.getGrupoActual().setNumero(n);
+
+        c.setAlumnoActual(new Alumno());
+        String dni1 = "11111";
+        c.getAlumnoActual().setDni(dni1);
+        c.getGrupoActual().addAlumno(c.getAlumnoActual()); 
+        c.getAsignatura().addAlumno(c.getAlumnoActual());
+
+        c.setAlumnoActual(new Alumno());
+        String dni2 = "22222";
+        c.getAlumnoActual().setDni(dni2);
+        c.getGrupoActual().addAlumno(c.getAlumnoActual());
+        c.getAsignatura().addAlumno(c.getAlumnoActual());
+
+        c.setAlumnoActual(new Alumno());
+        String dni3 = "33333";
+        c.getAlumnoActual().setDni(dni3);
+        c.getGrupoActual().addAlumno(c.getAlumnoActual());
+        c.getAsignatura().addAlumno(c.getAlumnoActual());
+
+        c.confirmarGrupo();
+        
+        c.añadirPrueba();
+        c.introducirDatosPrueba(4, "EPD1", "PrimeraEPD", 30, "EPD");
+        c.confirmarPrueba();
+        
+        c.añadirNotaGrupo();
+        c.seleccionarGrupo(id);
+        c.introducirNotaGrupo(4, 5.6);
+        
+        assertTrue(c.getAsignatura().getAlumno("11111").getNota(c.getAsignatura().getPrueba(4)).getCalificacion() == 5.6);
+        assertTrue(c.getAsignatura().getAlumno("22222").getNota(c.getAsignatura().getPrueba(4)).getCalificacion() == 5.6);
+        assertTrue(c.getAsignatura().getAlumno("33333").getNota(c.getAsignatura().getPrueba(4)).getCalificacion() == 5.6);
     }
 
     /**
