@@ -1,6 +1,7 @@
 package Aplicacion;
 
 import java.util.*;
+import edi.io.*;
 
 public class Controladora {
 
@@ -163,8 +164,8 @@ public class Controladora {
         
         while (alumnoActual == null) { //Flujo Alternativo 1
             System.out.println("DNI Incorrecto. Introduzca un DNI válido: ");
-            Scanner s = new Scanner(System.in);
-            dni = s.next();
+
+            dni = IO.readLine();
             alumnoActual = asignatura.getAlumno(dni);
         }
             

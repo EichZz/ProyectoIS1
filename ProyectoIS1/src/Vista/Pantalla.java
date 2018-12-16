@@ -4,6 +4,7 @@ import Aplicacion.Alumno;
 import Aplicacion.Controladora;
 import java.util.Iterator;
 import java.util.Scanner;
+import edi.io.*;
 
 public class Pantalla {
 
@@ -16,17 +17,17 @@ public class Pantalla {
     public void AñadirPruebasEvaluables() { //CU01
         controladora.añadirPrueba();
 
-        Scanner s = new Scanner(System.in);
+
         System.out.println("Introduzca el ID de la prueba: ");
-        int id = s.nextInt();
+        int id =(int) IO.readNumber();
         System.out.println("Introduzca el nombre de la prueba: ");
-        String nom = s.next();
+        String nom = IO.readLine();
         System.out.println("Introduzca la descripción de la prueba: ");
-        String desc = s.next();
+        String desc = IO.readLine();
         System.out.println("Introduzca el porcentaje de la prueba: ");
-        double porc = s.nextDouble();
+        double porc = IO.readNumber();
         System.out.println("Introduzca el tipo de prueba: ");
-        String tipo = s.next();
+        String tipo = IO.readLine();
 
         controladora.introducirDatosPrueba(id, nom, desc, porc, tipo);
 
@@ -34,7 +35,7 @@ public class Pantalla {
                 + "\n¿Desea confirmar la prueba?"
                 + "\n\t1. Sí"
                 + "\n\t0. No");
-        int opc = s.nextInt();
+        int opc =(int) IO.readNumber();
         if (opc == 1) {
             controladora.confirmarPrueba();
             System.out.println("La prueba se añadió con éxito");
@@ -58,7 +59,7 @@ public class Pantalla {
         System.out.println("Introduzca el DNI del alumno: ");
         String dni = s.nextLine();
         System.out.println("Introduzca el grupo de EPD: ");
-        int epd = s.nextInt();
+        int epd =(int) IO.readNumber();
 
         controladora.introducirDatosAlumnos(nom, apell, dni, epd);
 
@@ -66,7 +67,7 @@ public class Pantalla {
                 + "\n¿Desea confirmar el alumno?"
                 + "\n\t1. Sí"
                 + "\n\t0. No");
-        int opc = s.nextInt();
+        int opc =(int) IO.readNumber();
         if (opc == 1) {
             controladora.confirmarAlumno();
             System.out.println("El alumno se añadió con éxito");
@@ -80,9 +81,9 @@ public class Pantalla {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el ID de la prueba: ");
-        int id = s.nextInt();
+        int id =(int) IO.readNumber();
         System.out.println("Introduzca el DNI del alumno: ");
-        String dni = s.next();
+        String dni = IO.readLine();
         System.out.println("Introduzca la calificacion: ");
         double calif = s.nextDouble();
 
@@ -90,7 +91,7 @@ public class Pantalla {
 
         while (controladora.getAlumnoActual() == null) { //Flujo Alternativo 2
             System.out.println("DNI Incorrecto. Introduzca un DNI válido: ");
-            dni = s.next();
+            dni = IO.readLine();
             controladora.introducirDatosNota(id, dni, calif);
         }
 
@@ -98,7 +99,7 @@ public class Pantalla {
                 + "\n¿Desea confirmar la nota del alumno?"
                 + "\n\t1. Sí"
                 + "\n\t0. No");
-        int opc = s.nextInt();
+        int opc =(int) IO.readNumber();
         if (opc == 1) {
             controladora.confirmarNotaAlumno();
             System.out.println("La nota se añadió al alumno con éxito");
@@ -112,7 +113,7 @@ public class Pantalla {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el ID de la prueba: ");
-        int id = s.nextInt();
+        int id =(int) IO.readNumber();
         controladora.seleccionarPrueba(id);
 
         Iterator<Alumno> it = controladora.getAsignatura().getAlumnos();
@@ -131,15 +132,15 @@ public class Pantalla {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el ID del grupo: ");
-        int id = s.nextInt();
+        int id =(int) IO.readNumber();
         System.out.println("Introduzca el numero de alumnos del grupo: ");
-        int n = s.nextInt();
+        int n =(int) IO.readNumber();
 
         controladora.introducirDatosGrupo(id, n);
 
         for (int i = 0; i < n; i++) {
             System.out.println("Introduzca el DNI del siguiente alumno: ");
-            String dni = s.next();
+            String dni = IO.readLine();
             controladora.introducirDNIAlumno(dni);
         }
 
@@ -147,7 +148,7 @@ public class Pantalla {
                 + "\n¿Desea confirmar el grupo?"
                 + "\n\t1. Sí"
                 + "\n\t0. No");
-        int opc = s.nextInt();
+        int opc =(int) IO.readNumber();
         if (opc == 1) {
             controladora.confirmarGrupo();
             System.out.println("El grupo se añadió con éxito");
@@ -161,17 +162,17 @@ public class Pantalla {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el ID del grupo: ");
-        int idg = s.nextInt();
+        int idg =(int) IO.readNumber();
 
         controladora.seleccionarGrupo(idg);
         while (controladora.getGrupoActual() == null) { //Flujo Alternativo 1
             System.out.println("Grupo inexistente. Introduzca un ID de grupo válido: ");
-            idg = s.nextInt();
+            idg =(int) IO.readNumber();
             controladora.seleccionarGrupo(idg);
         }
 
         System.out.println("Introduzca el ID de la prueba: ");
-        int idp = s.nextInt();
+        int idp =(int) IO.readNumber();
         System.out.println("Introduzca la nota del alumno: ");
         double calificacion = s.nextDouble();
         controladora.introducirNotaGrupo(idp, calificacion);
@@ -180,7 +181,7 @@ public class Pantalla {
     public void ConsultaAlumno() {//CU08
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el DNI del alumno: ");
-        String dni = s.next();
+        String dni = IO.readLine();
         System.out.println(controladora.seleccionarAlumno(dni)); // Flujo Alternativo dentro del método.
     }
 
@@ -198,10 +199,10 @@ public class Pantalla {
                     + "\t3. Gestionar Datos.\n"
                     + "\t0. Salir.\n"
                     + "Introduzca una opción: ");
-            opcion = s.nextInt();
+            opcion =(int) IO.readNumber();
             while (opcion > 3 || opcion < 0) {
                 System.out.println("Introduzca una opcion valida:\n");
-                opcion = s.nextInt();
+                opcion =(int) IO.readNumber();
             }
             switch (opcion) {
                 case 1:
@@ -232,10 +233,10 @@ public class Pantalla {
                     + "\t5. Introducir Notas.\n"
                     + "\t0. Volver.\n"
                     + "Introduzca una opción: ");
-            opcion = s.nextInt();
+            opcion =(int) IO.readNumber();
             while (opcion > 5 || opcion < 0) {
                 System.out.print("Introduzca una opcion valida:\n");
-                opcion = s.nextInt();
+                opcion =(int) IO.readNumber();
             }
             switch (opcion) {
                 case 1:
@@ -268,10 +269,10 @@ public class Pantalla {
                     + "\t3. Introducir Nota Grupo.\n"
                     + "\t0. Volver.\n"
                     + "Introduzca una opción: ");
-            opcion = s.nextInt();
+            opcion =(int) IO.readNumber();
             while (opcion > 3 || opcion < 0) {
                 System.out.print("Introduzca una opcion valida:\n");
-                opcion = s.nextInt();
+                opcion =(int) IO.readNumber();
             }
             switch (opcion) {
                 case 1:
