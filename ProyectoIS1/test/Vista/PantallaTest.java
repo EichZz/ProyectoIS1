@@ -262,7 +262,7 @@ public class PantallaTest {
         c.confirmarNotaAlumno();
         
         String aux = c.seleccionarAlumno("111111111");
-        String s = c.mostrarAlumno() + "\nAlumno: \n";
+        String s = c.mostrarAlumno() + "\nPruebas y calificaciones:\n\n";
         
         Iterator<Nota> it = c.getAlumnoActual().getNotas();
         double total = 0;
