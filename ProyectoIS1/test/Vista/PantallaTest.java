@@ -211,7 +211,7 @@ public class PantallaTest {
         c.setAlumnoActual(new Alumno());
         String dni1 = "11111";
         c.getAlumnoActual().setDni(dni1);
-        c.getGrupoActual().addAlumno(c.getAlumnoActual()); 
+        c.getGrupoActual().addAlumno(c.getAlumnoActual());
         c.getAsignatura().addAlumno(c.getAlumnoActual());
 
         c.setAlumnoActual(new Alumno());
@@ -227,15 +227,15 @@ public class PantallaTest {
         c.getAsignatura().addAlumno(c.getAlumnoActual());
 
         c.confirmarGrupo();
-        
+
         c.añadirPrueba();
         c.introducirDatosPrueba(4, "EPD1", "PrimeraEPD", 30, "EPD");
         c.confirmarPrueba();
-        
+
         c.añadirNotaGrupo();
         c.seleccionarGrupo(id);
         c.introducirNotaGrupo(4, 5.6);
-        
+
         assertTrue(c.getAsignatura().getAlumno("11111").getNota(c.getAsignatura().getPrueba(4)).getCalificacion() == 5.6);
         assertTrue(c.getAsignatura().getAlumno("22222").getNota(c.getAsignatura().getPrueba(4)).getCalificacion() == 5.6);
         assertTrue(c.getAsignatura().getAlumno("33333").getNota(c.getAsignatura().getPrueba(4)).getCalificacion() == 5.6);
@@ -248,30 +248,32 @@ public class PantallaTest {
     public void testConsultaAlumno() {
         System.out.println("Consulta Alumno");
         Controladora c = new Controladora();
-        
+
         c.añadirPrueba();
         c.introducirDatosPrueba(4, "EPD1", "PrimeraEPD", 30, "EPD");
         c.confirmarPrueba();
-        
+
         c.añadirAlumno();
         c.introducirDatosAlumnos("Pepe", "Gracia", "111111111", 1);
         c.confirmarAlumno();
-        
+
         c.añadirNotaAlumno();
         c.introducirDatosNota(4, "111111111", 7.5);
         c.confirmarNotaAlumno();
-        
+
         String aux = c.seleccionarAlumno("111111111");
-        String s = c.mostrarAlumno() + "\nAlumno: \n";
-        
+
+        String s = c.getAlumnoActual().mostrarAlumno() + "\nPruebas y calificaciones:\n\n";
+
         Iterator<Nota> it = c.getAlumnoActual().getNotas();
         double total = 0;
-        while(it.hasNext()){
-            Nota auxiliar = it.next();
-            s += auxiliar.mostrarNota() + "\n\n";
-            total += auxiliar.getCalificacion() * (auxiliar.getPrueba().getPorcentaje() / 100);
+        while (it.hasNext()) {
+            c.setNotaActual(it.next());
+            s += c.getNotaActual().mostrarNota() + "\n\n";
+            total += c.getNotaActual().getCalificacion() * (c.getNotaActual().getPrueba().getPorcentaje() / 100);
         }
-            s += "Nota completa: " + total + "\n";
+        s += "Nota completa: " + total + "\n";
+
         assertTrue(s.equals(aux));
     }
 
