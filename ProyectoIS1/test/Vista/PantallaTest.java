@@ -104,20 +104,20 @@ public class PantallaTest {
     public void testIntroducirNotaAlumno() {
         System.out.println("IntroducirNotaAlumno");
         Controladora c = new Controladora();
-
-        c.setPruebaActual(new Prueba());
-        c.setNotaActual(new Nota());
-        c.setAlumnoActual(new Alumno());
-
-        int id = 1;
-        String dni = "111111";
-        double calif = 7.8;
-
-        c.getPruebaActual().setId_Prueba(id);
-        c.getAlumnoActual().setDni(dni);
-        c.getNotaActual().setCalificacion(calif);
-
-        assertTrue(c.getPruebaActual().getId_Prueba() == id && c.getAlumnoActual().getDni().equals(dni) && c.getNotaActual().getCalificacion() == calif);
+        
+        c.añadirPrueba();
+        c.introducirDatosPrueba(4, "EPD1", "PrimeraEPD", 30, "EPD");
+        c.confirmarPrueba();
+        
+        c.añadirAlumno();
+        c.introducirDatosAlumnos("Pepe", "Gracia", "111111111", 1);
+        c.confirmarAlumno();
+        
+        c.añadirNotaAlumno();
+        c.introducirDatosNota(4,"111111111", 7.5);
+        c.confirmarNotaAlumno();
+        
+        assertTrue(c.getAsignatura().getAlumno("111111111").getNota(c.getAsignatura().getPrueba(4)).getCalificacion() == 7.5);
     }
 
     /**
