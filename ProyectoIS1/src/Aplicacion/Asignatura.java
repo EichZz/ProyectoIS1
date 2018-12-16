@@ -56,6 +56,12 @@ public class Asignatura {
         ListaGrupos.add(g);
     }
 
+    public Asignatura() {
+        this.nombre = "Adignatura para tests";
+        ListaAlumnos = new ArrayList<>();        
+        ListaGrupos = new ArrayList<>();
+        ListaPruebas = new ArrayList<>();
+    }
     public boolean addPrueba(Prueba p) {
         return ListaPruebas.add(p);
     }
