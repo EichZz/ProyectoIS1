@@ -13,7 +13,11 @@ public class Controladora {
     public Controladora() {
         asignatura = new Asignatura("Asignatura");
     }
-//CU01-Introducir Prueba
+    
+    public Controladora(String test){
+        asignatura = new Asignatura();
+    }
+
     public void añadirPrueba() {
         pruebaActual = new Prueba();
     }
