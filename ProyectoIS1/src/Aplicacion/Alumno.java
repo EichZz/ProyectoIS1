@@ -11,6 +11,7 @@ public class Alumno {
     private List<Nota> listaNotas;
 
     public Alumno() {
+        listaNotas = new ArrayList<>();
     }
 
     public Alumno(String nombre, String apellidos, String dni, int grupo_de_EPD) {
