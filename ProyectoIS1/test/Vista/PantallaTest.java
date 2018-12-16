@@ -244,7 +244,37 @@ public class PantallaTest {
     public void testConsultaGrupo() {
         System.out.println("ConsultaGrupo");
         Controladora c = new Controladora();
-        String s = c.consultaGrupo();
-    }
+        String saux = c.consultaGrupo();
+        Iterator<Prueba> it = c.getAsignatura().getPruebas();
 
+        String s = "\t\t\t\t\t";
+
+        while (it.hasNext()) {
+            Prueba p = it.next();
+            s += p.getNombre() + "\t";
+        }
+
+        s += "Nota Final";
+
+        Iterator<Alumno> it2 = c.getAsignatura().getAlumnos();
+        while (it2.hasNext()) {
+            String aux = "";
+            Alumno a = it2.next();
+            aux += a.getApellidos() + " " + a.getNombre();
+            for (int i = 40 - aux.length(); i > 0; i--) {
+                aux += " ";
+            }
+            s += "\n" + aux;
+            Iterator<Nota> it3 = a.getNotas();
+            double total = 0;
+            while (it3.hasNext()) {
+                Nota n = it3.next();
+                s += n.getCalificacion() + "\t\t";
+                total += n.getCalificacion() * (n.getPrueba().getPorcentaje() / 100);
+            }
+            s += total;
+        }
+        assertTrue(s.equals(saux));
+
+    }
 }
