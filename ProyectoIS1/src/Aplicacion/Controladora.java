@@ -13,7 +13,7 @@ public class Controladora {
     public Controladora() {
         asignatura = new Asignatura("Asignatura");
     }
-
+//CU01-Introducir Prueba
     public void añadirPrueba() {
         pruebaActual = new Prueba();
     }
@@ -33,7 +33,7 @@ public class Controladora {
     public void confirmarPrueba() {
         asignatura.addPrueba(pruebaActual);
     }
-
+//CU02-Consultar Prueba
     public String consultaPruebas() {
         Iterator<Prueba> it = asignatura.getPruebas();
         String s = "\nPruebas de la asignatura:\n";
@@ -44,7 +44,7 @@ public class Controladora {
         }
         return s;
     }
-
+//CU03-Añadir Alumno
     public void añadirAlumno() {
         alumnoActual = new Alumno();
     }
@@ -64,7 +64,7 @@ public class Controladora {
         asignatura.addAlumno(alumnoActual);
         asignatura.getListaAlumnos().sort(new ComparadorAlumno());
     }
-
+//CU04-Añadir Nota Alumno
     public void añadirNotaAlumno() {
 
         notaActual = new Nota();
@@ -85,7 +85,7 @@ public class Controladora {
 
         alumnoActual.addNota(notaActual);
     }
-
+//CU05-Añadir Nota Clase
     public void añadirNotaClase() {
     }
 
@@ -99,7 +99,7 @@ public class Controladora {
         notaActual.setPrueba(pruebaActual);
         alumnoActual.addNota(notaActual);
     }
-
+//CU06-Crear Grupo
     public void crearGrupoTrabajo() {
         grupoActual = new Grupo();
     }
@@ -121,7 +121,7 @@ public class Controladora {
     public void confirmarGrupo() {
         asignatura.addGrupo(grupoActual);
     }
-
+//CU07-Añadir Nota Grupo
     public void añadirNotaGrupo() {
     }
 
@@ -139,7 +139,7 @@ public class Controladora {
             alumnoActual.addNota(notaActual);
         }
     }
-
+//CU08-Consulta Alumno
     public void consultaAlumno() {
     }
 
@@ -156,7 +156,7 @@ public class Controladora {
         }
         return s += "Nota completa: " + total + "\n";
     }
-//cambiar consulta grupo
+//CU09-Consulta Grupo
 
     public String consultaGrupo() {
 

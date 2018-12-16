@@ -13,7 +13,7 @@ public class Pantalla {
         controladora = new Controladora();
     }
 
-    public void AñadirPruebasEvaluables() {
+    public void AñadirPruebasEvaluables() { //CU01
         controladora.añadirPrueba();
 
         Scanner s = new Scanner(System.in);
@@ -43,11 +43,11 @@ public class Pantalla {
         }
     }
 
-    public void ConsultaPruebasEvaluables() {
+    public void ConsultaPruebasEvaluables() {//CU02
         System.out.println(controladora.consultaPruebas());
     }
 
-    public void AñadirDatosAlumnos() {
+    public void AñadirDatosAlumnos() {//CU03
         controladora.añadirAlumno();
 
         Scanner s = new Scanner(System.in);
@@ -75,7 +75,7 @@ public class Pantalla {
         }
     }
 
-    public void IntroducirNotaAlumno() {
+    public void IntroducirNotaAlumno() {//CU04
         controladora.añadirNotaAlumno();
 
         Scanner s = new Scanner(System.in);
@@ -101,7 +101,7 @@ public class Pantalla {
         }
     }
 
-    public void IntroducirNotaClase() {
+    public void IntroducirNotaClase() {//CU05
         controladora.añadirNotaClase();
 
         Scanner s = new Scanner(System.in);
@@ -120,7 +120,7 @@ public class Pantalla {
         }
     }
 
-    public void CrearGruposTrabajo() {
+    public void CrearGruposTrabajo() {//CU06
         controladora.crearGrupoTrabajo();
 
         Scanner s = new Scanner(System.in);
@@ -150,7 +150,7 @@ public class Pantalla {
         }
     }
 
-    public void IntroducirNotaGrupo() {
+    public void IntroducirNotaGrupo() {//CU07
         controladora.añadirNotaGrupo();
 
         Scanner s = new Scanner(System.in);
@@ -164,14 +164,14 @@ public class Pantalla {
         controladora.introducirNotaGrupo(idp, calificacion);
     }
 
-    public void ConsultaAlumno() {
+    public void ConsultaAlumno() {//CU08
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el DNI del alumno: ");
         String dni = s.next();
         System.out.println(controladora.seleccionarAlumno(dni));
     }
 
-    public void ConsultaGrupo() {
+    public void ConsultaGrupo() {//CU09
         System.out.println(controladora.consultaGrupo());
     }
 
