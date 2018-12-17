@@ -36,7 +36,6 @@ public class Nota {
     
     @Override
     public String toString() {
-        return "Prueba: " + prueba
-                + "Nota: " + calificacion;
+        return prueba + "Nota: " + calificacion;
     }
 }
