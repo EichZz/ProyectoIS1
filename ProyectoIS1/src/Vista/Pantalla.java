@@ -30,7 +30,7 @@ public class Pantalla {
 
         controladora.introducirDatosPrueba(id, nom, desc, porc, tipo);
 
-        System.out.println(controladora.mostrarPrueba()
+        System.out.println("\n" + controladora.mostrarPrueba()
                 + "\n¿Desea confirmar la prueba?"
                 + "\n\t1. Sí"
                 + "\n\t0. No");
@@ -170,7 +170,7 @@ public class Pantalla {
 
         System.out.println("Introduzca el ID de la prueba: ");
         int idp =(int) IO.readNumber();
-        System.out.println("Introduzca la nota del alumno: ");
+        System.out.println("Introduzca la nota del grupo: ");
         double calificacion = IO.readNumber();
         controladora.introducirNotaGrupo(idp, calificacion);
     }

@@ -52,7 +52,7 @@ public class Asignatura {
         g.setNumero(3);
         g.addAlumno(a1);
         g.addAlumno(a2);
-        g.addAlumno(a2);
+        g.addAlumno(a3);
         ListaGrupos.add(g);
     }
 
