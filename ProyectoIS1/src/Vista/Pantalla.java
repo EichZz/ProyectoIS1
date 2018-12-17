@@ -77,6 +77,7 @@ public class Pantalla {
     public void IntroducirNotaAlumno() {//CU04
         controladora.añadirNotaAlumno();
 
+        
         System.out.println("Introduzca el ID de la prueba: ");
         int id =(int) IO.readNumber();
         System.out.println("Introduzca el DNI del alumno: ");
@@ -108,6 +109,7 @@ public class Pantalla {
     public void IntroducirNotaClase() {//CU05
         controladora.añadirNotaClase();
 
+        
         System.out.println("Introduzca el ID de la prueba: ");
         int id =(int) IO.readNumber();
         controladora.seleccionarPrueba(id);
@@ -126,6 +128,7 @@ public class Pantalla {
     public void CrearGruposTrabajo() {//CU06
         controladora.crearGrupoTrabajo();
 
+        
         System.out.println("Introduzca el ID del grupo: ");
         int id =(int) IO.readNumber();
         System.out.println("Introduzca el numero de alumnos del grupo: ");
