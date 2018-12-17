@@ -57,7 +57,7 @@ public class Asignatura {
     }
 
     public Asignatura() {
-        this.nombre = "Adignatura para tests";
+        this.nombre = "Asignatura para tests";
         ListaAlumnos = new ArrayList<>();        
         ListaGrupos = new ArrayList<>();
         ListaPruebas = new ArrayList<>();
