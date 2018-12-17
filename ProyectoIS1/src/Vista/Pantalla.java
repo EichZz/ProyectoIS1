@@ -3,7 +3,6 @@ package Vista;
 import Aplicacion.Alumno;
 import Aplicacion.Controladora;
 import java.util.Iterator;
-import java.util.Scanner;
 import edi.io.*;
 
 public class Pantalla {
@@ -51,13 +50,12 @@ public class Pantalla {
     public void AñadirDatosAlumnos() {//CU03
         controladora.añadirAlumno();
 
-        Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el nombre del alumno: ");
-        String nom = s.nextLine();
+        String nom = IO.readLine();
         System.out.println("Introduzca los apellidos del alumno: ");
-        String apell = s.nextLine();
+        String apell = IO.readLine();
         System.out.println("Introduzca el DNI del alumno: ");
-        String dni = s.nextLine();
+        String dni = IO.readLine();
         System.out.println("Introduzca el grupo de EPD: ");
         int epd =(int) IO.readNumber();
 
@@ -79,13 +77,13 @@ public class Pantalla {
     public void IntroducirNotaAlumno() {//CU04
         controladora.añadirNotaAlumno();
 
-        Scanner s = new Scanner(System.in);
+        
         System.out.println("Introduzca el ID de la prueba: ");
         int id =(int) IO.readNumber();
         System.out.println("Introduzca el DNI del alumno: ");
         String dni = IO.readLine();
         System.out.println("Introduzca la calificacion: ");
-        double calif = s.nextDouble();
+        double calif = IO.readNumber();
 
         controladora.introducirDatosNota(id, dni, calif);
 
@@ -111,7 +109,7 @@ public class Pantalla {
     public void IntroducirNotaClase() {//CU05
         controladora.añadirNotaClase();
 
-        Scanner s = new Scanner(System.in);
+        
         System.out.println("Introduzca el ID de la prueba: ");
         int id =(int) IO.readNumber();
         controladora.seleccionarPrueba(id);
@@ -122,7 +120,7 @@ public class Pantalla {
             controladora.setAlumnoActual(it.next());
             System.out.println(controladora.getAlumnoActual().toString());
             System.out.println("Introduzca la nota del alumno: ");
-            calificacion = s.nextDouble();
+            calificacion = IO.readNumber();
             controladora.introducirDatosNota(calificacion);
         }
     }
@@ -130,7 +128,7 @@ public class Pantalla {
     public void CrearGruposTrabajo() {//CU06
         controladora.crearGrupoTrabajo();
 
-        Scanner s = new Scanner(System.in);
+        
         System.out.println("Introduzca el ID del grupo: ");
         int id =(int) IO.readNumber();
         System.out.println("Introduzca el numero de alumnos del grupo: ");
@@ -160,7 +158,6 @@ public class Pantalla {
     public void IntroducirNotaGrupo() {//CU07
         controladora.añadirNotaGrupo();
 
-        Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el ID del grupo: ");
         int idg =(int) IO.readNumber();
 
@@ -174,12 +171,11 @@ public class Pantalla {
         System.out.println("Introduzca el ID de la prueba: ");
         int idp =(int) IO.readNumber();
         System.out.println("Introduzca la nota del alumno: ");
-        double calificacion = s.nextDouble();
+        double calificacion = IO.readNumber();
         controladora.introducirNotaGrupo(idp, calificacion);
     }
 
     public void ConsultaAlumno() {//CU08
-        Scanner s = new Scanner(System.in);
         System.out.println("Introduzca el DNI del alumno: ");
         String dni = IO.readLine();
         System.out.println(controladora.seleccionarAlumno(dni)); // Flujo Alternativo dentro del método.
@@ -190,7 +186,6 @@ public class Pantalla {
     }
 
     public void MenuPrincipal() {
-        Scanner s = new Scanner(System.in);
         int opcion = -1;
         do {
             System.out.print("\nMenú Principal:\n"
@@ -222,7 +217,6 @@ public class Pantalla {
     }
 
     public void MenuDatos() {
-        Scanner s = new Scanner(System.in);
         int opcion = -1;
         do {
             System.out.print("\nMenú Gestión de Datos:\n"
@@ -260,7 +254,6 @@ public class Pantalla {
     }
 
     public void MenuNotas() {
-        Scanner s = new Scanner(System.in);
         int opcion = -1;
         do {
             System.out.print("\nMenú Introducir Notas:\n"
